@@ -102,5 +102,26 @@ namespace ControlWork
         {
 
         }
+
+        private void n_input_Leave(object sender, EventArgs e)
+        {
+            if (!int.TryParse(n_input.Text, out int number))
+            {
+                // Если введенное значение не является числом, очищаем поле ввода
+                n_input.Text = "";
+            }
+            else if (number < 5000 || number > 9000)
+            {
+                // Если число находится вне диапазона от 5000 до 9000, очищаем поле ввода
+                n_input.Text = "";
+            }
+
+        }
+
+        private void n_input_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.SetToolTip(n_input, "Введите число от 5000 до 9000");
+        }
     }
 }
