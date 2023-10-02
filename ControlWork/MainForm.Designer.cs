@@ -30,7 +30,6 @@
         {
             this.header_panel = new System.Windows.Forms.Panel();
             this.app_name_label = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.left_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.n_box = new System.Windows.Forms.Panel();
             this.n_input = new System.Windows.Forms.TextBox();
@@ -41,11 +40,14 @@
             this.b_box = new System.Windows.Forms.Panel();
             this.b_input = new System.Windows.Forms.TextBox();
             this.b_label = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button_sort_begin = new System.Windows.Forms.Button();
             this.header_panel.SuspendLayout();
             this.left_panel.SuspendLayout();
             this.n_box.SuspendLayout();
             this.panel2.SuspendLayout();
             this.b_box.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // header_panel
@@ -68,14 +70,6 @@
             this.app_name_label.Text = "Сортировка данных";
             this.app_name_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 522);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(962, 89);
-            this.panel1.TabIndex = 3;
-            // 
             // left_panel
             // 
             this.left_panel.Controls.Add(this.n_box);
@@ -94,12 +88,13 @@
             this.n_box.Controls.Add(this.n_label);
             this.n_box.Location = new System.Drawing.Point(5, 5);
             this.n_box.Name = "n_box";
-            this.n_box.Size = new System.Drawing.Size(185, 100);
+            this.n_box.Size = new System.Drawing.Size(185, 78);
             this.n_box.TabIndex = 2;
             // 
             // n_input
             // 
-            this.n_input.Location = new System.Drawing.Point(44, 42);
+            this.n_input.Location = new System.Drawing.Point(44, 33);
+            this.n_input.MinimumSize = new System.Drawing.Size(100, 20);
             this.n_input.Name = "n_input";
             this.n_input.Size = new System.Drawing.Size(120, 20);
             this.n_input.TabIndex = 1;
@@ -108,10 +103,9 @@
             // 
             // n_label
             // 
-            this.n_label.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.n_label.AutoSize = true;
             this.n_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.n_label.Location = new System.Drawing.Point(7, 34);
+            this.n_label.Location = new System.Drawing.Point(7, 24);
             this.n_label.Name = "n_label";
             this.n_label.Size = new System.Drawing.Size(27, 29);
             this.n_label.TabIndex = 0;
@@ -121,14 +115,14 @@
             // 
             this.panel2.Controls.Add(this.a_input);
             this.panel2.Controls.Add(this.a_label);
-            this.panel2.Location = new System.Drawing.Point(5, 111);
+            this.panel2.Location = new System.Drawing.Point(5, 89);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(185, 100);
             this.panel2.TabIndex = 1;
             // 
             // a_input
             // 
-            this.a_input.Location = new System.Drawing.Point(44, 42);
+            this.a_input.Location = new System.Drawing.Point(44, 38);
             this.a_input.Name = "a_input";
             this.a_input.Size = new System.Drawing.Size(120, 20);
             this.a_input.TabIndex = 1;
@@ -148,14 +142,14 @@
             // 
             this.b_box.Controls.Add(this.b_input);
             this.b_box.Controls.Add(this.b_label);
-            this.b_box.Location = new System.Drawing.Point(5, 217);
+            this.b_box.Location = new System.Drawing.Point(5, 195);
             this.b_box.Name = "b_box";
             this.b_box.Size = new System.Drawing.Size(185, 100);
             this.b_box.TabIndex = 2;
             // 
             // b_input
             // 
-            this.b_input.Location = new System.Drawing.Point(44, 42);
+            this.b_input.Location = new System.Drawing.Point(43, 38);
             this.b_input.Name = "b_input";
             this.b_input.Size = new System.Drawing.Size(120, 20);
             this.b_input.TabIndex = 1;
@@ -170,6 +164,29 @@
             this.b_label.Size = new System.Drawing.Size(30, 29);
             this.b_label.TabIndex = 0;
             this.b_label.Text = "B";
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel1.Controls.Add(this.button_sort_begin);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 522);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(10);
+            this.panel1.Size = new System.Drawing.Size(962, 89);
+            this.panel1.TabIndex = 3;
+            // 
+            // button_sort_begin
+            // 
+            this.button_sort_begin.AutoSize = true;
+            this.button_sort_begin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button_sort_begin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_sort_begin.Location = new System.Drawing.Point(10, 10);
+            this.button_sort_begin.Name = "button_sort_begin";
+            this.button_sort_begin.Size = new System.Drawing.Size(180, 69);
+            this.button_sort_begin.TabIndex = 5;
+            this.button_sort_begin.Text = "Сортировка";
+            this.button_sort_begin.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -191,6 +208,8 @@
             this.panel2.PerformLayout();
             this.b_box.ResumeLayout(false);
             this.b_box.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -199,7 +218,6 @@
 
         private System.Windows.Forms.Panel header_panel;
         private System.Windows.Forms.Label app_name_label;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel left_panel;
         private System.Windows.Forms.Label a_label;
         private System.Windows.Forms.Panel panel2;
@@ -210,6 +228,8 @@
         private System.Windows.Forms.Panel b_box;
         private System.Windows.Forms.TextBox b_input;
         private System.Windows.Forms.Label b_label;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button_sort_begin;
     }
 }
 
