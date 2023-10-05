@@ -1,4 +1,6 @@
-﻿namespace ControlWork
+﻿using System.Windows.Forms;
+
+namespace ControlWork
 {
     partial class MainForm
     {
@@ -42,12 +44,18 @@
             this.b_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_sort_begin = new System.Windows.Forms.Button();
+            this.main_panel = new System.Windows.Forms.Panel();
+            this.list_origin_array = new System.Windows.Forms.ListView();
+            this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnElement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
             this.header_panel.SuspendLayout();
             this.left_panel.SuspendLayout();
             this.n_box.SuspendLayout();
             this.panel2.SuspendLayout();
             this.b_box.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.main_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // header_panel
@@ -98,6 +106,7 @@
             this.n_input.Name = "n_input";
             this.n_input.Size = new System.Drawing.Size(120, 20);
             this.n_input.TabIndex = 1;
+            this.n_input.Text = "100";
             this.n_input.Leave += new System.EventHandler(this.n_input_Leave);
             this.n_input.MouseHover += new System.EventHandler(this.n_input_MouseHover);
             // 
@@ -126,6 +135,7 @@
             this.a_input.Name = "a_input";
             this.a_input.Size = new System.Drawing.Size(120, 20);
             this.a_input.TabIndex = 1;
+            this.a_input.Text = "0,85";
             // 
             // a_label
             // 
@@ -153,6 +163,7 @@
             this.b_input.Name = "b_input";
             this.b_input.Size = new System.Drawing.Size(120, 20);
             this.b_input.TabIndex = 1;
+            this.b_input.Text = "0,65";
             // 
             // b_label
             // 
@@ -187,17 +198,63 @@
             this.button_sort_begin.TabIndex = 5;
             this.button_sort_begin.Text = "Сортировка";
             this.button_sort_begin.UseVisualStyleBackColor = true;
+            this.button_sort_begin.Click += new System.EventHandler(this.button_sort_begin_Click);
+            // 
+            // main_panel
+            // 
+            this.main_panel.Controls.Add(this.list_origin_array);
+            this.main_panel.Controls.Add(this.label1);
+            this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.main_panel.Location = new System.Drawing.Point(200, 55);
+            this.main_panel.Name = "main_panel";
+            this.main_panel.Size = new System.Drawing.Size(762, 467);
+            this.main_panel.TabIndex = 5;
+            // 
+            // list_origin_array
+            // 
+            this.list_origin_array.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnId,
+            this.columnElement});
+            this.list_origin_array.HideSelection = false;
+            this.list_origin_array.Location = new System.Drawing.Point(26, 55);
+            this.list_origin_array.Name = "list_origin_array";
+            this.list_origin_array.Size = new System.Drawing.Size(256, 97);
+            this.list_origin_array.TabIndex = 2;
+            this.list_origin_array.UseCompatibleStateImageBehavior = false;
+            this.list_origin_array.View = System.Windows.Forms.View.Details;
+            // 
+            // columnId
+            // 
+            this.columnId.Text = "Номер";
+            this.columnId.Width = 101;
+            // 
+            // columnElement
+            // 
+            this.columnElement.Text = "Элемент";
+            this.columnElement.Width = 150;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(21, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(218, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Исходный массив";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 611);
+            this.Controls.Add(this.main_panel);
             this.Controls.Add(this.left_panel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.header_panel);
-            this.MinimumSize = new System.Drawing.Size(400, 450);
+            this.MinimumSize = new System.Drawing.Size(500, 450);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Курсовая работа АиСД";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.header_panel.ResumeLayout(false);
@@ -210,6 +267,8 @@
             this.b_box.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.main_panel.ResumeLayout(false);
+            this.main_panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,6 +289,11 @@
         private System.Windows.Forms.Label b_label;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button_sort_begin;
+        private System.Windows.Forms.Panel main_panel;
+        private System.Windows.Forms.Label label1;
+        private ListView list_origin_array;
+        private ColumnHeader columnId;
+        private ColumnHeader columnElement;
     }
 }
 

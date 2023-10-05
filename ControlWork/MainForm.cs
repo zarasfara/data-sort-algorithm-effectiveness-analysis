@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ControlWork
@@ -13,6 +6,8 @@ namespace ControlWork
     public partial class MainForm : Form
     {
         public const int RAND_MAX = 32768;
+
+        private double[] array;
 
         public MainForm()
         {
@@ -76,21 +71,21 @@ namespace ControlWork
             }
         }
 
-        public static double GetExponential(int A, int B)
+        public static double GetExponential(double A, double B)
         {
             Random random = new Random();
             double rundomNumber = random.NextDouble();
 
             double u = rundomNumber / RAND_MAX;
 
-            double f = A - B * Math.Log(1 - u);
+            double result = A - B * Math.Log(1 - u);
 
-            return f;
+            return result;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void n_input_Leave(object sender, EventArgs e)
@@ -100,7 +95,7 @@ namespace ControlWork
                 // Если введенное значение не является числом, очищаем поле ввода
                 n_input.Text = "";
             }
-            else if (number < 5000 || number > 9000)
+            else if (number < 1 || number > 1000)
             {
                 // Если число находится вне диапазона от 5000 до 9000, очищаем поле ввода
                 n_input.Text = "";
@@ -108,10 +103,67 @@ namespace ControlWork
 
         }
 
+        // n_input_MouseHover Подсказка для ввода чисел.
         private void n_input_MouseHover(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.SetToolTip(n_input, "Введите число от 5000 до 9000");
         }
+
+        // button_sort_begin_Click Нажатие на кнопку "Сортировка".
+        private void button_sort_begin_Click(object sender, EventArgs e)
+        {
+            // проверки begin
+            if (string.IsNullOrEmpty(a_input.Text) || string.IsNullOrEmpty(n_input.Text) || string.IsNullOrEmpty(b_input.Text))
+            {
+                MessageBox.Show("Ошибка: одно или несколько полей пустые.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            double a, b;
+            if (!double.TryParse(a_input.Text, out a) || !double.TryParse(b_input.Text, out b))
+            {
+                MessageBox.Show("Ошибка: в полях 'A' и 'B' должны быть только числа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // проверки end
+
+            int n = int.Parse(n_input.Text);
+
+            this.array = new double[n]; // Инициализация массива
+
+            list_origin_array.Items.Clear();
+
+            for (int i = 1; i <= n; i++)
+            {
+                this.array[i - 1] = GetExponential(a, b); // Заполнение массива с помощью GetExponential(a, b)
+
+                // Создаем новый элемент ListViewItem
+                ListViewItem item = new ListViewItem();
+
+                // Добавляем значения для каждого столбца
+                item.Text = i.ToString();
+                item.SubItems.Add(this.array[i - 1].ToString());
+
+                // Добавляем элемент в ListView
+                list_origin_array.Items.Add(item);
+            }
+
+            /*
+                 Array.Sort(this.array); // Сортировка массива
+
+                list_sorted_array.Items.Clear();
+
+                for (int i = 0; i < this.array.Length; i++)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = (i + 1).ToString();
+                    item.SubItems.Add(this.array[i].ToString());
+                    list_sorted_array.Items.Add(item);
+                }
+             */
+        }
+
     }
 }
