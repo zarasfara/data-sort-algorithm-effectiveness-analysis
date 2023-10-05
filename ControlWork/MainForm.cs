@@ -76,22 +76,12 @@ namespace ControlWork
             }
         }
 
-        public static double GetExponentialSecondVer(int A, int B)
-        {
-            Random random = new Random();
-            double u = random.NextDouble();
-
-            double f = A - B * Math.Log(1 - u);
-
-            return f;
-        }
-
         public static double GetExponential(int A, int B)
         {
             Random random = new Random();
             double rundomNumber = random.NextDouble();
 
-            double u = rundomNumber / RAND_MAX + 1;
+            double u = rundomNumber / RAND_MAX;
 
             double f = A - B * Math.Log(1 - u);
 
