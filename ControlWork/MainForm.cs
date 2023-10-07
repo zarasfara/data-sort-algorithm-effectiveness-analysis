@@ -7,14 +7,14 @@ namespace ControlWork
     {
         public const int RAND_MAX = 32768;
 
-        private double[] array;
+        private static Random random = new Random();
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        public static void MergeSortAlgorithm(int[] arr, int left, int right)
+        public static void MergeSortAlgorithm(double[] arr, int left, int right)
         {
             if (left < right)
             {
@@ -27,53 +27,65 @@ namespace ControlWork
             }
         }
 
-        public static void Merge(int[] arr, int left, int middle, int right)
+        public static void Merge(double[] arr, int left, int middle, int right)
         {
             int n1 = middle - left + 1;
             int n2 = right - middle;
 
-            int[] leftArray = new int[n1];
-            int[] rightArray = new int[n2];
+            double[] leftArray = new double[n1];
+            double[] rightArray = new double[n2];
 
-            Array.Copy(arr, left, leftArray, 0, n1);
-            Array.Copy(arr, middle + 1, rightArray, 0, n2);
+            for (int i = 0; i < n1; ++i)
+                leftArray[i] = arr[left + i];
 
-            int i = 0, j = 0;
+            for (int j = 0; j < n2; ++j)
+                rightArray[j] = arr[middle + 1 + j];
+
             int k = left;
+            int m = 0;
+            int n = 0;
 
-            while (i < n1 && j < n2)
+            while (m < n1 && n < n2)
             {
-                if (leftArray[i] <= rightArray[j])
+                if (leftArray[m] <= rightArray[n])
                 {
-                    arr[k] = leftArray[i];
-                    i++;
+                    arr[k] = leftArray[m];
+                    m++;
                 }
                 else
                 {
-                    arr[k] = rightArray[j];
-                    j++;
+                    arr[k] = rightArray[n];
+                    n++;
                 }
                 k++;
             }
 
-            while (i < n1)
+            while (m < n1)
             {
-                arr[k] = leftArray[i];
-                i++;
+                arr[k] = leftArray[m];
+                m++;
                 k++;
             }
 
-            while (j < n2)
+            while (n < n2)
             {
-                arr[k] = rightArray[j];
-                j++;
+                arr[k] = rightArray[n];
+                n++;
                 k++;
             }
         }
 
+        //public static double GetExponential(double a, double b)
+        //{
+        //    double u = random.NextDouble();
+
+        //    double result = a - (1 / b) * Math.Log(u);
+
+        //    return result;
+        //}
+
         public static double GetExponential(double A, double B)
         {
-            Random random = new Random();
             double rundomNumber = random.NextDouble();
 
             double u = rundomNumber / RAND_MAX;
@@ -129,41 +141,51 @@ namespace ControlWork
 
             // проверки end
 
+            // Заполнение изначального массива
             int n = int.Parse(n_input.Text);
 
-            this.array = new double[n]; // Инициализация массива
+            double[] array = new double[n]; // Инициализация массива
 
             list_origin_array.Items.Clear();
 
+
+            // Заполнение listview
             for (int i = 1; i <= n; i++)
             {
-                this.array[i - 1] = GetExponential(a, b); // Заполнение массива с помощью GetExponential(a, b)
+                array[i - 1] = GetExponential(a, b); // Заполнение массива с помощью GetExponential(a, b)
 
                 // Создаем новый элемент ListViewItem
                 ListViewItem item = new ListViewItem();
 
                 // Добавляем значения для каждого столбца
                 item.Text = i.ToString();
-                item.SubItems.Add(this.array[i - 1].ToString());
+                item.SubItems.Add(array[i - 1].ToString());
 
                 // Добавляем элемент в ListView
                 list_origin_array.Items.Add(item);
             }
 
-            /*
-                 Array.Sort(this.array); // Сортировка массива
+            // Создаём отсортированный массив
+            double[] sortedArray = new double[n];
+            Array.Copy(array, sortedArray, n);
+            MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1);
 
-                list_sorted_array.Items.Clear();
+            list_sorted_array.BeginUpdate(); // Отключаем обновление ListView
 
-                for (int i = 0; i < this.array.Length; i++)
-                {
-                    ListViewItem item = new ListViewItem();
-                    item.Text = (i + 1).ToString();
-                    item.SubItems.Add(this.array[i].ToString());
-                    list_sorted_array.Items.Add(item);
-                }
-             */
+            list_sorted_array.Items.Clear();
+            ListViewItem[] sortedItems = new ListViewItem[n];
+
+            for (int i = 0; i < sortedArray.Length; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = (i + 1).ToString();
+                item.SubItems.Add(sortedArray[i].ToString());
+                sortedItems[i] = item;
+            }
+
+            list_sorted_array.Items.AddRange(sortedItems); // Добавляем все элементы одним вызовом
+
+            list_sorted_array.EndUpdate(); // Включаем обновление ListView
         }
-
     }
 }

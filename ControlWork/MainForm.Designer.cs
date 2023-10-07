@@ -49,6 +49,10 @@ namespace ControlWork
             this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnElement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.list_sorted_array = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.header_panel.SuspendLayout();
             this.left_panel.SuspendLayout();
             this.n_box.SuspendLayout();
@@ -202,6 +206,8 @@ namespace ControlWork
             // 
             // main_panel
             // 
+            this.main_panel.Controls.Add(this.list_sorted_array);
+            this.main_panel.Controls.Add(this.label2);
             this.main_panel.Controls.Add(this.list_origin_array);
             this.main_panel.Controls.Add(this.label1);
             this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -242,6 +248,39 @@ namespace ControlWork
             this.label1.Size = new System.Drawing.Size(218, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Исходный массив";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(357, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(316, 29);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Отсортированный массив";
+            // 
+            // list_sorted_array
+            // 
+            this.list_sorted_array.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.list_sorted_array.HideSelection = false;
+            this.list_sorted_array.Location = new System.Drawing.Point(362, 55);
+            this.list_sorted_array.Name = "list_sorted_array";
+            this.list_sorted_array.Size = new System.Drawing.Size(256, 97);
+            this.list_sorted_array.TabIndex = 5;
+            this.list_sorted_array.UseCompatibleStateImageBehavior = false;
+            this.list_sorted_array.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Номер";
+            this.columnHeader1.Width = 101;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Элемент";
+            this.columnHeader2.Width = 150;
             // 
             // MainForm
             // 
@@ -294,6 +333,10 @@ namespace ControlWork
         private ListView list_origin_array;
         private ColumnHeader columnId;
         private ColumnHeader columnElement;
+        private ListView list_sorted_array;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private Label label2;
     }
 }
 
