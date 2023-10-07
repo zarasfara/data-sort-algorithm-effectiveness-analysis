@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ControlWork
@@ -125,7 +126,7 @@ namespace ControlWork
         // button_sort_begin_Click Нажатие на кнопку "Сортировка".
         private void button_sort_begin_Click(object sender, EventArgs e)
         {
-            // проверки begin
+            // Проверка на пустые поля
             if (string.IsNullOrEmpty(a_input.Text) || string.IsNullOrEmpty(n_input.Text) || string.IsNullOrEmpty(b_input.Text))
             {
                 MessageBox.Show("Ошибка: одно или несколько полей пустые.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -139,39 +140,32 @@ namespace ControlWork
                 return;
             }
 
-            // проверки end
-
             // Заполнение изначального массива
             int n = int.Parse(n_input.Text);
-
-            double[] array = new double[n]; // Инициализация массива
-
-            list_origin_array.Items.Clear();
-
+            double[] array = new double[n];
 
             // Заполнение listview
+            List<ListViewItem> items = new List<ListViewItem>();
+
             for (int i = 1; i <= n; i++)
             {
-                array[i - 1] = GetExponential(a, b); // Заполнение массива с помощью GetExponential(a, b)
+                array[i - 1] = GetExponential(a, b);
 
-                // Создаем новый элемент ListViewItem
                 ListViewItem item = new ListViewItem();
-
-                // Добавляем значения для каждого столбца
                 item.Text = i.ToString();
                 item.SubItems.Add(array[i - 1].ToString());
 
-                // Добавляем элемент в ListView
-                list_origin_array.Items.Add(item);
+                items.Add(item);
             }
 
-            // Создаём отсортированный массив
+            list_origin_array.Items.AddRange(items.ToArray());
+
+            // Заполнение сортированного массива
             double[] sortedArray = new double[n];
             Array.Copy(array, sortedArray, n);
             MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1);
 
-            list_sorted_array.BeginUpdate(); // Отключаем обновление ListView
-
+            list_sorted_array.BeginUpdate();
             list_sorted_array.Items.Clear();
             ListViewItem[] sortedItems = new ListViewItem[n];
 
@@ -183,9 +177,9 @@ namespace ControlWork
                 sortedItems[i] = item;
             }
 
-            list_sorted_array.Items.AddRange(sortedItems); // Добавляем все элементы одним вызовом
-
-            list_sorted_array.EndUpdate(); // Включаем обновление ListView
+            list_sorted_array.Items.AddRange(sortedItems);
+            list_sorted_array.EndUpdate();
         }
+
     }
 }
