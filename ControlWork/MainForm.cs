@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ControlWork
@@ -15,20 +16,20 @@ namespace ControlWork
             InitializeComponent();
         }
 
-        public static void MergeSortAlgorithm(double[] arr, int left, int right)
+        public static void MergeSortAlgorithm(double[] arr, int left, int right, ref int comparisonCount, ref int swapCount)
         {
             if (left < right)
             {
                 int middle = (left + right) / 2;
 
-                MergeSortAlgorithm(arr, left, middle);
-                MergeSortAlgorithm(arr, middle + 1, right);
+                MergeSortAlgorithm(arr, left, middle, ref comparisonCount, ref swapCount);
+                MergeSortAlgorithm(arr, middle + 1, right, ref comparisonCount, ref swapCount);
 
-                Merge(arr, left, middle, right);
+                Merge(arr, left, middle, right, ref comparisonCount, ref swapCount);
             }
         }
 
-        public static void Merge(double[] arr, int left, int middle, int right)
+        public static void Merge(double[] arr, int left, int middle, int right, ref int comparisonCount, ref int swapCount)
         {
             int n1 = middle - left + 1;
             int n2 = right - middle;
@@ -48,6 +49,8 @@ namespace ControlWork
 
             while (m < n1 && n < n2)
             {
+                comparisonCount++; // Увеличиваем счетчик сравнений
+
                 if (leftArray[m] <= rightArray[n])
                 {
                     arr[k] = leftArray[m];
@@ -59,6 +62,7 @@ namespace ControlWork
                     n++;
                 }
                 k++;
+                swapCount++; // Увеличиваем счетчик перестановок
             }
 
             while (m < n1)
@@ -66,6 +70,7 @@ namespace ControlWork
                 arr[k] = leftArray[m];
                 m++;
                 k++;
+                swapCount++; // Увеличиваем счетчик перестановок
             }
 
             while (n < n2)
@@ -73,8 +78,10 @@ namespace ControlWork
                 arr[k] = rightArray[n];
                 n++;
                 k++;
+                swapCount++; // Увеличиваем счетчик перестановок
             }
         }
+
 
         //public static double GetExponential(double a, double b)
         //{
@@ -163,7 +170,24 @@ namespace ControlWork
             // Заполнение сортированного массива
             double[] sortedArray = new double[n];
             Array.Copy(array, sortedArray, n);
-            MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1);
+
+            // Замер времени
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            int comparisonCount = 0; // сравнения
+            int swapCount = 0; // перестановок
+
+            MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1, ref comparisonCount, ref swapCount);
+
+            textBoxСomparisonCount.Text = comparisonCount.ToString();
+            textBoxSwapCount.Text = swapCount.ToString();
+
+            stopwatch.Stop();
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            text_box_time.Text = elapsedTime.TotalMilliseconds.ToString();
+            // Конец замера времени
 
             list_sorted_array.BeginUpdate();
             list_sorted_array.Items.Clear();

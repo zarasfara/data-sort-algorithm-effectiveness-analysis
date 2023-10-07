@@ -45,14 +45,21 @@ namespace ControlWork
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_sort_begin = new System.Windows.Forms.Button();
             this.main_panel = new System.Windows.Forms.Panel();
+            this.list_sorted_array = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
             this.list_origin_array = new System.Windows.Forms.ListView();
             this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnElement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.list_sorted_array = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.text_box_time = new System.Windows.Forms.TextBox();
+            this.textBoxСomparisonCount = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxSwapCount = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.header_panel.SuspendLayout();
             this.left_panel.SuspendLayout();
             this.n_box.SuspendLayout();
@@ -60,6 +67,7 @@ namespace ControlWork
             this.b_box.SuspendLayout();
             this.panel1.SuspendLayout();
             this.main_panel.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // header_panel
@@ -206,6 +214,7 @@ namespace ControlWork
             // 
             // main_panel
             // 
+            this.main_panel.Controls.Add(this.panel3);
             this.main_panel.Controls.Add(this.list_sorted_array);
             this.main_panel.Controls.Add(this.label2);
             this.main_panel.Controls.Add(this.list_origin_array);
@@ -215,6 +224,39 @@ namespace ControlWork
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(762, 467);
             this.main_panel.TabIndex = 5;
+            // 
+            // list_sorted_array
+            // 
+            this.list_sorted_array.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.list_sorted_array.HideSelection = false;
+            this.list_sorted_array.Location = new System.Drawing.Point(362, 55);
+            this.list_sorted_array.Name = "list_sorted_array";
+            this.list_sorted_array.Size = new System.Drawing.Size(256, 97);
+            this.list_sorted_array.TabIndex = 5;
+            this.list_sorted_array.UseCompatibleStateImageBehavior = false;
+            this.list_sorted_array.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Номер";
+            this.columnHeader1.Width = 101;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Элемент";
+            this.columnHeader2.Width = 150;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(357, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(316, 29);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Отсортированный массив";
             // 
             // list_origin_array
             // 
@@ -249,38 +291,69 @@ namespace ControlWork
             this.label1.TabIndex = 1;
             this.label1.Text = "Исходный массив";
             // 
-            // label2
+            // panel3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(357, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(316, 29);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Отсортированный массив";
+            this.panel3.Controls.Add(this.textBoxSwapCount);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.textBoxСomparisonCount);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.text_box_time);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(7, 340);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(275, 121);
+            this.panel3.TabIndex = 6;
             // 
-            // list_sorted_array
+            // label3
             // 
-            this.list_sorted_array.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.list_sorted_array.HideSelection = false;
-            this.list_sorted_array.Location = new System.Drawing.Point(362, 55);
-            this.list_sorted_array.Name = "list_sorted_array";
-            this.list_sorted_array.Size = new System.Drawing.Size(256, 97);
-            this.list_sorted_array.TabIndex = 5;
-            this.list_sorted_array.UseCompatibleStateImageBehavior = false;
-            this.list_sorted_array.View = System.Windows.Forms.View.Details;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(3, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Время";
             // 
-            // columnHeader1
+            // text_box_time
             // 
-            this.columnHeader1.Text = "Номер";
-            this.columnHeader1.Width = 101;
+            this.text_box_time.Location = new System.Drawing.Point(148, 15);
+            this.text_box_time.Name = "text_box_time";
+            this.text_box_time.Size = new System.Drawing.Size(100, 20);
+            this.text_box_time.TabIndex = 1;
             // 
-            // columnHeader2
+            // textBoxСomparisonCount
             // 
-            this.columnHeader2.Text = "Элемент";
-            this.columnHeader2.Width = 150;
+            this.textBoxСomparisonCount.Location = new System.Drawing.Point(148, 41);
+            this.textBoxСomparisonCount.Name = "textBoxСomparisonCount";
+            this.textBoxСomparisonCount.Size = new System.Drawing.Size(100, 20);
+            this.textBoxСomparisonCount.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(3, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 24);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "сравнения";
+            // 
+            // textBoxSwapCount
+            // 
+            this.textBoxSwapCount.Location = new System.Drawing.Point(148, 67);
+            this.textBoxSwapCount.Name = "textBoxSwapCount";
+            this.textBoxSwapCount.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSwapCount.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(3, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(139, 24);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Перестановок";
             // 
             // MainForm
             // 
@@ -308,6 +381,8 @@ namespace ControlWork
             this.panel1.PerformLayout();
             this.main_panel.ResumeLayout(false);
             this.main_panel.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,6 +412,13 @@ namespace ControlWork
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private Label label2;
+        private Panel panel3;
+        private TextBox text_box_time;
+        private Label label3;
+        private TextBox textBoxSwapCount;
+        private Label label5;
+        private TextBox textBoxСomparisonCount;
+        private Label label4;
     }
 }
 
