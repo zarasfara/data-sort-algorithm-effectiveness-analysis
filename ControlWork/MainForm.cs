@@ -151,6 +151,8 @@ namespace ControlWork
             int n = int.Parse(n_input.Text);
             double[] array = new double[n];
 
+            list_origin_array.Items.Clear();
+
             // Заполнение listview
             List<ListViewItem> items = new List<ListViewItem>();
 
