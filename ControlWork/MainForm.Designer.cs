@@ -44,7 +44,6 @@ namespace ControlWork
             this.b_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_sort_begin = new System.Windows.Forms.Button();
-            this.main_panel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxSwapCount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,14 +59,20 @@ namespace ControlWork
             this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnElement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
+            this.main_panel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.header_panel.SuspendLayout();
             this.left_panel.SuspendLayout();
             this.n_box.SuspendLayout();
             this.panel2.SuspendLayout();
             this.b_box.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.main_panel.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.main_panel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // header_panel
@@ -191,7 +196,7 @@ namespace ControlWork
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Controls.Add(this.button_sort_begin);
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 522);
             this.panel1.Name = "panel1";
@@ -202,28 +207,15 @@ namespace ControlWork
             // button_sort_begin
             // 
             this.button_sort_begin.AutoSize = true;
-            this.button_sort_begin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button_sort_begin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_sort_begin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_sort_begin.Location = new System.Drawing.Point(10, 10);
+            this.button_sort_begin.Location = new System.Drawing.Point(3, 3);
             this.button_sort_begin.Name = "button_sort_begin";
-            this.button_sort_begin.Size = new System.Drawing.Size(180, 69);
+            this.button_sort_begin.Size = new System.Drawing.Size(307, 63);
             this.button_sort_begin.TabIndex = 5;
             this.button_sort_begin.Text = "Сортировка";
             this.button_sort_begin.UseVisualStyleBackColor = true;
             this.button_sort_begin.Click += new System.EventHandler(this.button_sort_begin_Click);
-            // 
-            // main_panel
-            // 
-            this.main_panel.Controls.Add(this.panel3);
-            this.main_panel.Controls.Add(this.list_sorted_array);
-            this.main_panel.Controls.Add(this.label2);
-            this.main_panel.Controls.Add(this.list_origin_array);
-            this.main_panel.Controls.Add(this.label1);
-            this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.main_panel.Location = new System.Drawing.Point(200, 55);
-            this.main_panel.Name = "main_panel";
-            this.main_panel.Size = new System.Drawing.Size(762, 467);
-            this.main_panel.TabIndex = 5;
             // 
             // panel3
             // 
@@ -233,9 +225,10 @@ namespace ControlWork
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.text_box_time);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(7, 340);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 320);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(275, 121);
+            this.panel3.Size = new System.Drawing.Size(375, 144);
             this.panel3.TabIndex = 6;
             // 
             // textBoxSwapCount
@@ -270,7 +263,7 @@ namespace ControlWork
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 24);
             this.label4.TabIndex = 2;
-            this.label4.Text = "сравнения";
+            this.label4.Text = "Сравнения";
             // 
             // text_box_time
             // 
@@ -294,10 +287,11 @@ namespace ControlWork
             this.list_sorted_array.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.list_sorted_array.Dock = System.Windows.Forms.DockStyle.Fill;
             this.list_sorted_array.HideSelection = false;
-            this.list_sorted_array.Location = new System.Drawing.Point(408, 55);
+            this.list_sorted_array.Location = new System.Drawing.Point(384, 43);
             this.list_sorted_array.Name = "list_sorted_array";
-            this.list_sorted_array.Size = new System.Drawing.Size(256, 97);
+            this.list_sorted_array.Size = new System.Drawing.Size(375, 271);
             this.list_sorted_array.TabIndex = 5;
             this.list_sorted_array.UseCompatibleStateImageBehavior = false;
             this.list_sorted_array.View = System.Windows.Forms.View.Details;
@@ -305,32 +299,35 @@ namespace ControlWork
             // columnHeader1
             // 
             this.columnHeader1.Text = "Номер";
-            this.columnHeader1.Width = 101;
+            this.columnHeader1.Width = 85;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Элемент";
-            this.columnHeader2.Width = 136;
+            this.columnHeader2.Width = 180;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(403, 18);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(384, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(316, 29);
+            this.label2.Size = new System.Drawing.Size(375, 40);
             this.label2.TabIndex = 4;
             this.label2.Text = "Отсортированный массив";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // list_origin_array
             // 
             this.list_origin_array.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnId,
             this.columnElement});
+            this.list_origin_array.Dock = System.Windows.Forms.DockStyle.Fill;
             this.list_origin_array.HideSelection = false;
-            this.list_origin_array.Location = new System.Drawing.Point(26, 55);
+            this.list_origin_array.Location = new System.Drawing.Point(3, 43);
             this.list_origin_array.Name = "list_origin_array";
-            this.list_origin_array.Size = new System.Drawing.Size(303, 97);
+            this.list_origin_array.Size = new System.Drawing.Size(375, 271);
             this.list_origin_array.TabIndex = 2;
             this.list_origin_array.UseCompatibleStateImageBehavior = false;
             this.list_origin_array.View = System.Windows.Forms.View.Details;
@@ -338,22 +335,81 @@ namespace ControlWork
             // columnId
             // 
             this.columnId.Text = "Номер";
-            this.columnId.Width = 101;
+            this.columnId.Width = 85;
             // 
             // columnElement
             // 
             this.columnElement.Text = "Элемент";
-            this.columnElement.Width = 150;
+            this.columnElement.Width = 180;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(21, 19);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 29);
+            this.label1.Size = new System.Drawing.Size(375, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "Исходный массив";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // main_panel
+            // 
+            this.main_panel.Controls.Add(this.tableLayoutPanel1);
+            this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.main_panel.Location = new System.Drawing.Point(200, 55);
+            this.main_panel.Name = "main_panel";
+            this.main_panel.Size = new System.Drawing.Size(762, 467);
+            this.main_panel.TabIndex = 5;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.list_sorted_array, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.list_origin_array, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(762, 467);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.Controls.Add(this.button_sort_begin, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 10);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(942, 69);
+            this.tableLayoutPanel2.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(316, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(308, 63);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Очистка";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -378,11 +434,13 @@ namespace ControlWork
             this.b_box.ResumeLayout(false);
             this.b_box.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.main_panel.ResumeLayout(false);
-            this.main_panel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.main_panel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -403,7 +461,6 @@ namespace ControlWork
         private System.Windows.Forms.Label b_label;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button_sort_begin;
-        private System.Windows.Forms.Panel main_panel;
         private System.Windows.Forms.Label label1;
         private ListView list_origin_array;
         private ColumnHeader columnId;
@@ -419,6 +476,10 @@ namespace ControlWork
         private Label label5;
         private TextBox textBoxСomparisonCount;
         private Label label4;
+        private Panel main_panel;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Button button1;
     }
 }
 
