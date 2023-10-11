@@ -182,8 +182,8 @@ namespace ControlWork
 
             MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1, ref comparisonCount, ref swapCount);
 
-            textBoxСomparisonCount.Text = comparisonCount.ToString();
-            textBoxSwapCount.Text = swapCount.ToString();
+            text_box_comparison_count.Text = comparisonCount.ToString();
+            text_box_swap_count.Text = swapCount.ToString();
 
             stopwatch.Stop();
             TimeSpan elapsedTime = stopwatch.Elapsed;
@@ -207,5 +207,16 @@ namespace ControlWork
             list_sorted_array.EndUpdate();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.n_input.Text = "";
+            this.a_input.Text = "";
+            this.b_input.Text = "";
+            list_origin_array.Items.Clear();
+            list_sorted_array.Items.Clear();
+            text_box_time.Text = "";
+            text_box_comparison_count.Text = "";
+            text_box_swap_count.Text = "";
+        }
     }
 }
