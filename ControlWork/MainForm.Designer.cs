@@ -43,14 +43,16 @@ namespace ControlWork
             this.b_input = new System.Windows.Forms.TextBox();
             this.b_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button_sort_begin = new System.Windows.Forms.Button();
+            this.button_clear = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBoxSwapCount = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxСomparisonCount = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.text_box_swap_count = new System.Windows.Forms.TextBox();
+            this.label_transpotion_count = new System.Windows.Forms.Label();
+            this.text_box_comparison_count = new System.Windows.Forms.TextBox();
+            this.label_comparison_count = new System.Windows.Forms.Label();
             this.text_box_time = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label_time = new System.Windows.Forms.Label();
             this.list_sorted_array = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -60,19 +62,17 @@ namespace ControlWork
             this.columnElement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.main_panel = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.main_table = new System.Windows.Forms.TableLayoutPanel();
             this.header_panel.SuspendLayout();
             this.left_panel.SuspendLayout();
             this.n_box.SuspendLayout();
             this.panel2.SuspendLayout();
             this.b_box.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.main_panel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.main_table.SuspendLayout();
             this.SuspendLayout();
             // 
             // header_panel
@@ -204,6 +204,23 @@ namespace ControlWork
             this.panel1.Size = new System.Drawing.Size(962, 89);
             this.panel1.TabIndex = 3;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.Controls.Add(this.button_sort_begin, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button_clear, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 10);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(942, 69);
+            this.tableLayoutPanel2.TabIndex = 7;
+            // 
             // button_sort_begin
             // 
             this.button_sort_begin.AutoSize = true;
@@ -217,53 +234,65 @@ namespace ControlWork
             this.button_sort_begin.UseVisualStyleBackColor = true;
             this.button_sort_begin.Click += new System.EventHandler(this.button_sort_begin_Click);
             // 
+            // button_clear
+            // 
+            this.button_clear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_clear.Location = new System.Drawing.Point(316, 3);
+            this.button_clear.Name = "button_clear";
+            this.button_clear.Size = new System.Drawing.Size(308, 63);
+            this.button_clear.TabIndex = 6;
+            this.button_clear.Text = "Очистка";
+            this.button_clear.UseVisualStyleBackColor = true;
+            this.button_clear.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textBoxSwapCount);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.textBoxСomparisonCount);
-            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.text_box_swap_count);
+            this.panel3.Controls.Add(this.label_transpotion_count);
+            this.panel3.Controls.Add(this.text_box_comparison_count);
+            this.panel3.Controls.Add(this.label_comparison_count);
             this.panel3.Controls.Add(this.text_box_time);
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label_time);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 320);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(375, 144);
             this.panel3.TabIndex = 6;
             // 
-            // textBoxSwapCount
+            // text_box_swap_count
             // 
-            this.textBoxSwapCount.Location = new System.Drawing.Point(148, 67);
-            this.textBoxSwapCount.Name = "textBoxSwapCount";
-            this.textBoxSwapCount.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSwapCount.TabIndex = 5;
+            this.text_box_swap_count.Location = new System.Drawing.Point(148, 67);
+            this.text_box_swap_count.Name = "text_box_swap_count";
+            this.text_box_swap_count.Size = new System.Drawing.Size(100, 20);
+            this.text_box_swap_count.TabIndex = 5;
             // 
-            // label5
+            // label_transpotion_count
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(3, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(139, 24);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Перестановок";
+            this.label_transpotion_count.AutoSize = true;
+            this.label_transpotion_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_transpotion_count.Location = new System.Drawing.Point(3, 63);
+            this.label_transpotion_count.Name = "label_transpotion_count";
+            this.label_transpotion_count.Size = new System.Drawing.Size(139, 24);
+            this.label_transpotion_count.TabIndex = 4;
+            this.label_transpotion_count.Text = "Перестановок";
             // 
-            // textBoxСomparisonCount
+            // text_box_comparison_count
             // 
-            this.textBoxСomparisonCount.Location = new System.Drawing.Point(148, 41);
-            this.textBoxСomparisonCount.Name = "textBoxСomparisonCount";
-            this.textBoxСomparisonCount.Size = new System.Drawing.Size(100, 20);
-            this.textBoxСomparisonCount.TabIndex = 3;
+            this.text_box_comparison_count.Location = new System.Drawing.Point(148, 41);
+            this.text_box_comparison_count.Name = "text_box_comparison_count";
+            this.text_box_comparison_count.Size = new System.Drawing.Size(100, 20);
+            this.text_box_comparison_count.TabIndex = 3;
             // 
-            // label4
+            // label_comparison_count
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(3, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 24);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Сравнения";
+            this.label_comparison_count.AutoSize = true;
+            this.label_comparison_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_comparison_count.Location = new System.Drawing.Point(3, 37);
+            this.label_comparison_count.Name = "label_comparison_count";
+            this.label_comparison_count.Size = new System.Drawing.Size(109, 24);
+            this.label_comparison_count.TabIndex = 2;
+            this.label_comparison_count.Text = "Сравнения";
             // 
             // text_box_time
             // 
@@ -272,15 +301,15 @@ namespace ControlWork
             this.text_box_time.Size = new System.Drawing.Size(100, 20);
             this.text_box_time.TabIndex = 1;
             // 
-            // label3
+            // label_time
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 24);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Время";
+            this.label_time.AutoSize = true;
+            this.label_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_time.Location = new System.Drawing.Point(3, 11);
+            this.label_time.Name = "label_time";
+            this.label_time.Size = new System.Drawing.Size(67, 24);
+            this.label_time.TabIndex = 0;
+            this.label_time.Text = "Время";
             // 
             // list_sorted_array
             // 
@@ -356,60 +385,32 @@ namespace ControlWork
             // 
             // main_panel
             // 
-            this.main_panel.Controls.Add(this.tableLayoutPanel1);
+            this.main_panel.Controls.Add(this.main_table);
             this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.main_panel.Location = new System.Drawing.Point(200, 55);
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(762, 467);
             this.main_panel.TabIndex = 5;
             // 
-            // tableLayoutPanel1
+            // main_table
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.list_sorted_array, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.list_origin_array, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(762, 467);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel2.Controls.Add(this.button_sort_begin, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 10);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(942, 69);
-            this.tableLayoutPanel2.TabIndex = 7;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(316, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(308, 63);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Очистка";
-            this.button1.UseVisualStyleBackColor = true;
+            this.main_table.ColumnCount = 2;
+            this.main_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.main_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.main_table.Controls.Add(this.panel3, 0, 2);
+            this.main_table.Controls.Add(this.list_sorted_array, 1, 1);
+            this.main_table.Controls.Add(this.label1, 0, 0);
+            this.main_table.Controls.Add(this.list_origin_array, 0, 1);
+            this.main_table.Controls.Add(this.label2, 1, 0);
+            this.main_table.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.main_table.Location = new System.Drawing.Point(0, 0);
+            this.main_table.Name = "main_table";
+            this.main_table.RowCount = 3;
+            this.main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.main_table.Size = new System.Drawing.Size(762, 467);
+            this.main_table.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -434,13 +435,13 @@ namespace ControlWork
             this.b_box.ResumeLayout(false);
             this.b_box.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.main_panel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.main_table.ResumeLayout(false);
+            this.main_table.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -471,15 +472,15 @@ namespace ControlWork
         private Label label2;
         private Panel panel3;
         private TextBox text_box_time;
-        private Label label3;
-        private TextBox textBoxSwapCount;
-        private Label label5;
-        private TextBox textBoxСomparisonCount;
-        private Label label4;
+        private Label label_time;
+        private TextBox text_box_swap_count;
+        private Label label_transpotion_count;
+        private TextBox text_box_comparison_count;
+        private Label label_comparison_count;
         private Panel main_panel;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel main_table;
         private TableLayoutPanel tableLayoutPanel2;
-        private Button button1;
+        private Button button_clear;
     }
 }
 
