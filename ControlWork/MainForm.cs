@@ -16,72 +16,6 @@ namespace ControlWork
             InitializeComponent();
         }
 
-        public static void MergeSortAlgorithm(double[] arr, int left, int right, ref int comparisonCount, ref int swapCount)
-        {
-            if (left < right)
-            {
-                int middle = (left + right) / 2;
-
-                MergeSortAlgorithm(arr, left, middle, ref comparisonCount, ref swapCount);
-                MergeSortAlgorithm(arr, middle + 1, right, ref comparisonCount, ref swapCount);
-
-                Merge(arr, left, middle, right, ref comparisonCount, ref swapCount);
-            }
-        }
-
-        public static void Merge(double[] arr, int left, int middle, int right, ref int comparisonCount, ref int swapCount)
-        {
-            int n1 = middle - left + 1;
-            int n2 = right - middle;
-
-            double[] leftArray = new double[n1];
-            double[] rightArray = new double[n2];
-
-            for (int i = 0; i < n1; ++i)
-                leftArray[i] = arr[left + i];
-
-            for (int j = 0; j < n2; ++j)
-                rightArray[j] = arr[middle + 1 + j];
-
-            int k = left;
-            int m = 0;
-            int n = 0;
-
-            while (m < n1 && n < n2)
-            {
-                comparisonCount++; // Увеличиваем счетчик сравнений
-
-                if (leftArray[m] <= rightArray[n])
-                {
-                    arr[k] = leftArray[m];
-                    m++;
-                }
-                else
-                {
-                    arr[k] = rightArray[n];
-                    n++;
-                }
-                k++;
-                swapCount++; // Увеличиваем счетчик перестановок
-            }
-
-            while (m < n1)
-            {
-                arr[k] = leftArray[m];
-                m++;
-                k++;
-                swapCount++; // Увеличиваем счетчик перестановок
-            }
-
-            while (n < n2)
-            {
-                arr[k] = rightArray[n];
-                n++;
-                k++;
-                swapCount++; // Увеличиваем счетчик перестановок
-            }
-        }
-
         public static double GetExponential(double A, double B)
         {
             double rundomNumber = random.NextDouble();
@@ -143,11 +77,14 @@ namespace ControlWork
 
             int comparisonCount = 0;
             int swapCount = 0;
-            MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1, ref comparisonCount, ref swapCount);
+            MergeSortHelper.MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1, ref comparisonCount, ref swapCount);
+
+            stopwatch.Stop(); // Остановка таймера после сортировки
 
             DisplaySortedArray(sortedArray); // Отображение отсортированного массива
             DisplayStatistics(comparisonCount, swapCount, stopwatch.Elapsed.TotalMilliseconds); // Отображение статистики
         }
+
 
         private bool ValidateInputs()
         {
@@ -224,20 +161,20 @@ namespace ControlWork
             text_box_time.Text = elapsedTime.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void call_calc_form_button_Click_1(object sender, EventArgs e)
+        {
+            CalcForm form = new CalcForm();
+
+            form.ShowDialog();
+        }
+
+        private void button_clear_Click(object sender, EventArgs e)
         {
             list_origin_array.Items.Clear();
             list_sorted_array.Items.Clear();
             text_box_time.Text = "";
             text_box_comparison_count.Text = "";
             text_box_swap_count.Text = "";
-        }
-
-        private void call_calc_form_button_Click_1(object sender, EventArgs e)
-        {
-            CalcForm form = new CalcForm();
-
-            form.ShowDialog();
         }
     }
 }
