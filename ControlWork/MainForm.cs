@@ -82,16 +82,6 @@ namespace ControlWork
             }
         }
 
-
-        //public static double GetExponential(double a, double b)
-        //{
-        //    double u = random.NextDouble();
-
-        //    double result = a - (1 / b) * Math.Log(u);
-
-        //    return result;
-        //}
-
         public static double GetExponential(double A, double B)
         {
             double rundomNumber = random.NextDouble();
@@ -115,7 +105,7 @@ namespace ControlWork
                 // Если введенное значение не является числом, очищаем поле ввода
                 n_input.Text = "";
             }
-            else if (number < 1 || number > 1000)
+            else if (number < 1 || number > 9000)
             {
                 // Если число находится вне диапазона от 5000 до 9000, очищаем поле ввода
                 n_input.Text = "";
