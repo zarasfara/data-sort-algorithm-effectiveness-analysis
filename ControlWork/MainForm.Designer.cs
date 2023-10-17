@@ -435,7 +435,7 @@ namespace ControlWork
             this.button_clear.TabIndex = 6;
             this.button_clear.Text = "Очистка";
             this.button_clear.UseVisualStyleBackColor = true;
-            this.button_clear.Click += new System.EventHandler(this.button1_Click);
+            this.button_clear.Click += new System.EventHandler(this.button_clear_Click);
             // 
             // call_calc_form_button
             // 

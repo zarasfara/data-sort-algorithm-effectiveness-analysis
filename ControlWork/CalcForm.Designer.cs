@@ -50,7 +50,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(800, 55);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Расчёты";
+            this.label1.Text = "Оценивание коэффициентов уравнения связи";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CalcForm
