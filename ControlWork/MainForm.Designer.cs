@@ -36,12 +36,12 @@ namespace ControlWork
             this.n_label = new System.Windows.Forms.Label();
             this.a_input = new System.Windows.Forms.TextBox();
             this.a_label = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.main_table = new System.Windows.Forms.TableLayoutPanel();
+            this.table_main_content = new System.Windows.Forms.TableLayoutPanel();
+            this.table_sort_content = new System.Windows.Forms.TableLayoutPanel();
             this.list_origin_array = new System.Windows.Forms.ListView();
             this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnElement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel_counter = new System.Windows.Forms.Panel();
             this.text_box_swap_count = new System.Windows.Forms.TextBox();
             this.label_transpotion_count = new System.Windows.Forms.Label();
             this.text_box_comparison_count = new System.Windows.Forms.TextBox();
@@ -54,25 +54,25 @@ namespace ControlWork
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.table_layout_b = new System.Windows.Forms.TableLayoutPanel();
             this.b_input = new System.Windows.Forms.TextBox();
             this.b_label = new System.Windows.Forms.Label();
+            this.table_layout_n = new System.Windows.Forms.TableLayoutPanel();
+            this.table_layout_a = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button_sort_begin = new System.Windows.Forms.Button();
             this.button_clear = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.header_panel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.main_table.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.table_main_content.SuspendLayout();
+            this.table_sort_content.SuspendLayout();
+            this.panel_counter.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.table_layout_b.SuspendLayout();
+            this.table_layout_n.SuspendLayout();
+            this.table_layout_a.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // header_panel
@@ -98,7 +98,7 @@ namespace ControlWork
             // n_input
             // 
             this.n_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.n_input.Location = new System.Drawing.Point(44, 67);
+            this.n_input.Location = new System.Drawing.Point(36, 67);
             this.n_input.MinimumSize = new System.Drawing.Size(100, 20);
             this.n_input.Name = "n_input";
             this.n_input.Size = new System.Drawing.Size(120, 20);
@@ -122,7 +122,7 @@ namespace ControlWork
             // a_input
             // 
             this.a_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.a_input.Location = new System.Drawing.Point(44, 67);
+            this.a_input.Location = new System.Drawing.Point(39, 67);
             this.a_input.Name = "a_input";
             this.a_input.Size = new System.Drawing.Size(120, 20);
             this.a_input.TabIndex = 1;
@@ -139,40 +139,40 @@ namespace ControlWork
             this.a_label.TabIndex = 0;
             this.a_label.Text = "A";
             // 
-            // tableLayoutPanel1
+            // table_main_content
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel1.Controls.Add(this.main_table, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 55);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1092, 486);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.table_main_content.ColumnCount = 2;
+            this.table_main_content.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.table_main_content.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.table_main_content.Controls.Add(this.table_sort_content, 1, 0);
+            this.table_main_content.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.table_main_content.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.table_main_content.Location = new System.Drawing.Point(0, 55);
+            this.table_main_content.Name = "table_main_content";
+            this.table_main_content.RowCount = 1;
+            this.table_main_content.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_main_content.Size = new System.Drawing.Size(1092, 486);
+            this.table_main_content.TabIndex = 6;
             // 
-            // main_table
+            // table_sort_content
             // 
-            this.main_table.ColumnCount = 2;
-            this.main_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.6063F));
-            this.main_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.3937F));
-            this.main_table.Controls.Add(this.list_origin_array, 0, 1);
-            this.main_table.Controls.Add(this.panel3, 0, 2);
-            this.main_table.Controls.Add(this.list_sorted_array, 1, 1);
-            this.main_table.Controls.Add(this.label1, 0, 0);
-            this.main_table.Controls.Add(this.label2, 1, 0);
-            this.main_table.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.main_table.Location = new System.Drawing.Point(221, 3);
-            this.main_table.Name = "main_table";
-            this.main_table.RowCount = 3;
-            this.main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.main_table.Size = new System.Drawing.Size(868, 480);
-            this.main_table.TabIndex = 0;
+            this.table_sort_content.ColumnCount = 2;
+            this.table_sort_content.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.6063F));
+            this.table_sort_content.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.3937F));
+            this.table_sort_content.Controls.Add(this.list_origin_array, 0, 1);
+            this.table_sort_content.Controls.Add(this.panel_counter, 0, 2);
+            this.table_sort_content.Controls.Add(this.list_sorted_array, 1, 1);
+            this.table_sort_content.Controls.Add(this.label1, 0, 0);
+            this.table_sort_content.Controls.Add(this.label2, 1, 0);
+            this.table_sort_content.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.table_sort_content.Location = new System.Drawing.Point(221, 3);
+            this.table_sort_content.Name = "table_sort_content";
+            this.table_sort_content.RowCount = 3;
+            this.table_sort_content.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.table_sort_content.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_sort_content.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.table_sort_content.Size = new System.Drawing.Size(868, 480);
+            this.table_sort_content.TabIndex = 0;
             // 
             // list_origin_array
             // 
@@ -198,19 +198,19 @@ namespace ControlWork
             this.columnElement.Text = "Элемент";
             this.columnElement.Width = 180;
             // 
-            // panel3
+            // panel_counter
             // 
-            this.panel3.Controls.Add(this.text_box_swap_count);
-            this.panel3.Controls.Add(this.label_transpotion_count);
-            this.panel3.Controls.Add(this.text_box_comparison_count);
-            this.panel3.Controls.Add(this.label_comparison_count);
-            this.panel3.Controls.Add(this.text_box_time);
-            this.panel3.Controls.Add(this.label_time);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 333);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(424, 144);
-            this.panel3.TabIndex = 6;
+            this.panel_counter.Controls.Add(this.text_box_swap_count);
+            this.panel_counter.Controls.Add(this.label_transpotion_count);
+            this.panel_counter.Controls.Add(this.text_box_comparison_count);
+            this.panel_counter.Controls.Add(this.label_comparison_count);
+            this.panel_counter.Controls.Add(this.text_box_time);
+            this.panel_counter.Controls.Add(this.label_time);
+            this.panel_counter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_counter.Location = new System.Drawing.Point(3, 333);
+            this.panel_counter.Name = "panel_counter";
+            this.panel_counter.Size = new System.Drawing.Size(424, 144);
+            this.panel_counter.TabIndex = 6;
             // 
             // text_box_swap_count
             // 
@@ -315,9 +315,9 @@ namespace ControlWork
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel6, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.table_layout_b, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.table_layout_n, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.table_layout_a, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -328,10 +328,25 @@ namespace ControlWork
             this.tableLayoutPanel3.Size = new System.Drawing.Size(212, 480);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
+            // table_layout_b
+            // 
+            this.table_layout_b.ColumnCount = 2;
+            this.table_layout_b.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.table_layout_b.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_b.Controls.Add(this.b_input, 1, 0);
+            this.table_layout_b.Controls.Add(this.b_label, 0, 0);
+            this.table_layout_b.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.table_layout_b.Location = new System.Drawing.Point(3, 323);
+            this.table_layout_b.Name = "table_layout_b";
+            this.table_layout_b.RowCount = 1;
+            this.table_layout_b.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_b.Size = new System.Drawing.Size(206, 154);
+            this.table_layout_b.TabIndex = 5;
+            // 
             // b_input
             // 
             this.b_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.b_input.Location = new System.Drawing.Point(44, 67);
+            this.b_input.Location = new System.Drawing.Point(39, 67);
             this.b_input.Name = "b_input";
             this.b_input.Size = new System.Drawing.Size(120, 20);
             this.b_input.TabIndex = 1;
@@ -347,6 +362,36 @@ namespace ControlWork
             this.b_label.Size = new System.Drawing.Size(30, 29);
             this.b_label.TabIndex = 0;
             this.b_label.Text = "B";
+            // 
+            // table_layout_n
+            // 
+            this.table_layout_n.ColumnCount = 2;
+            this.table_layout_n.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.table_layout_n.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_n.Controls.Add(this.n_input, 1, 0);
+            this.table_layout_n.Controls.Add(this.n_label, 0, 0);
+            this.table_layout_n.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.table_layout_n.Location = new System.Drawing.Point(3, 3);
+            this.table_layout_n.Name = "table_layout_n";
+            this.table_layout_n.RowCount = 1;
+            this.table_layout_n.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_n.Size = new System.Drawing.Size(206, 154);
+            this.table_layout_n.TabIndex = 3;
+            // 
+            // table_layout_a
+            // 
+            this.table_layout_a.ColumnCount = 2;
+            this.table_layout_a.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.table_layout_a.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_a.Controls.Add(this.a_input, 1, 0);
+            this.table_layout_a.Controls.Add(this.a_label, 0, 0);
+            this.table_layout_a.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.table_layout_a.Location = new System.Drawing.Point(3, 163);
+            this.table_layout_a.Name = "table_layout_a";
+            this.table_layout_a.RowCount = 1;
+            this.table_layout_a.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_a.Size = new System.Drawing.Size(206, 154);
+            this.table_layout_a.TabIndex = 4;
             // 
             // tableLayoutPanel2
             // 
@@ -401,60 +446,12 @@ namespace ControlWork
             this.panel1.Size = new System.Drawing.Size(1092, 89);
             this.panel1.TabIndex = 3;
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel4.Controls.Add(this.n_input, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.n_label, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(206, 154);
-            this.tableLayoutPanel4.TabIndex = 3;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel5.Controls.Add(this.a_input, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.a_label, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 163);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(206, 154);
-            this.tableLayoutPanel5.TabIndex = 4;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel6.Controls.Add(this.b_input, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.b_label, 0, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 323);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 154);
-            this.tableLayoutPanel6.TabIndex = 5;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 630);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.table_main_content);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.header_panel);
             this.MinimumSize = new System.Drawing.Size(500, 450);
@@ -463,21 +460,21 @@ namespace ControlWork
             this.Text = "Курсовая работа АиСД";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.header_panel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.main_table.ResumeLayout(false);
-            this.main_table.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.table_main_content.ResumeLayout(false);
+            this.table_sort_content.ResumeLayout(false);
+            this.table_sort_content.PerformLayout();
+            this.panel_counter.ResumeLayout(false);
+            this.panel_counter.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.table_layout_b.ResumeLayout(false);
+            this.table_layout_b.PerformLayout();
+            this.table_layout_n.ResumeLayout(false);
+            this.table_layout_n.PerformLayout();
+            this.table_layout_a.ResumeLayout(false);
+            this.table_layout_a.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -490,12 +487,12 @@ namespace ControlWork
         private System.Windows.Forms.TextBox a_input;
         private System.Windows.Forms.TextBox n_input;
         private System.Windows.Forms.Label n_label;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel main_table;
+        private TableLayoutPanel table_main_content;
+        private TableLayoutPanel table_sort_content;
         private ListView list_origin_array;
         private ColumnHeader columnId;
         private ColumnHeader columnElement;
-        private Panel panel3;
+        private Panel panel_counter;
         private TextBox text_box_swap_count;
         private Label label_transpotion_count;
         private TextBox text_box_comparison_count;
@@ -514,9 +511,9 @@ namespace ControlWork
         private TextBox b_input;
         private Label b_label;
         private TableLayoutPanel tableLayoutPanel3;
-        private TableLayoutPanel tableLayoutPanel4;
-        private TableLayoutPanel tableLayoutPanel5;
-        private TableLayoutPanel tableLayoutPanel6;
+        private TableLayoutPanel table_layout_n;
+        private TableLayoutPanel table_layout_a;
+        private TableLayoutPanel table_layout_b;
     }
 }
 
