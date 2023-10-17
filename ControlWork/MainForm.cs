@@ -199,14 +199,18 @@ namespace ControlWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.n_input.Text = "";
-            this.a_input.Text = "";
-            this.b_input.Text = "";
             list_origin_array.Items.Clear();
             list_sorted_array.Items.Clear();
             text_box_time.Text = "";
             text_box_comparison_count.Text = "";
             text_box_swap_count.Text = "";
+        }
+
+        private void call_calc_form_button_Click_1(object sender, EventArgs e)
+        {
+            CalcForm form = new CalcForm();
+
+            form.ShowDialog();
         }
     }
 }
