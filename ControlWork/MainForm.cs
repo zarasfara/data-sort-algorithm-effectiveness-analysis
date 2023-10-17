@@ -73,12 +73,11 @@ namespace ControlWork
             Array.Copy(array, sortedArray, n);
 
             Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
 
+            stopwatch.Start(); // Отсчёт таймер
             int comparisonCount = 0;
             int swapCount = 0;
             MergeSortHelper.MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1, ref comparisonCount, ref swapCount);
-
             stopwatch.Stop(); // Остановка таймера после сортировки
 
             DisplaySortedArray(sortedArray); // Отображение отсортированного массива
@@ -115,7 +114,6 @@ namespace ControlWork
         private double[] GenerateArray(double a, double b, int n)
         {
             double[] array = new double[n];
-            Random random = new Random();
 
             for (int i = 0; i < n; i++)
             {
@@ -172,9 +170,9 @@ namespace ControlWork
         {
             list_origin_array.Items.Clear();
             list_sorted_array.Items.Clear();
-            text_box_time.Text = "";
-            text_box_comparison_count.Text = "";
-            text_box_swap_count.Text = "";
+            text_box_time.Clear();
+            text_box_comparison_count.Clear();
+            text_box_swap_count.Clear();
         }
     }
 }
