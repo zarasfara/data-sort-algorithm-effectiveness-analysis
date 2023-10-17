@@ -62,6 +62,7 @@ namespace ControlWork
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button_sort_begin = new System.Windows.Forms.Button();
             this.button_clear = new System.Windows.Forms.Button();
+            this.call_calc_form_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.header_panel.SuspendLayout();
             this.table_main_content.SuspendLayout();
@@ -191,12 +192,12 @@ namespace ControlWork
             // columnId
             // 
             this.columnId.Text = "Номер";
-            this.columnId.Width = 85;
+            this.columnId.Width = 100;
             // 
             // columnElement
             // 
             this.columnElement.Text = "Элемент";
-            this.columnElement.Width = 180;
+            this.columnElement.Width = 100;
             // 
             // panel_counter
             // 
@@ -280,12 +281,12 @@ namespace ControlWork
             // columnHeader1
             // 
             this.columnHeader1.Text = "Номер";
-            this.columnHeader1.Width = 85;
+            this.columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Элемент";
-            this.columnHeader2.Width = 180;
+            this.columnHeader2.Width = 100;
             // 
             // label1
             // 
@@ -401,6 +402,7 @@ namespace ControlWork
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel2.Controls.Add(this.button_sort_begin, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button_clear, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.call_calc_form_button, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -434,6 +436,18 @@ namespace ControlWork
             this.button_clear.Text = "Очистка";
             this.button_clear.UseVisualStyleBackColor = true;
             this.button_clear.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // call_calc_form_button
+            // 
+            this.call_calc_form_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.call_calc_form_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.call_calc_form_button.Location = new System.Drawing.Point(717, 3);
+            this.call_calc_form_button.Name = "call_calc_form_button";
+            this.call_calc_form_button.Size = new System.Drawing.Size(352, 63);
+            this.call_calc_form_button.TabIndex = 7;
+            this.call_calc_form_button.Text = "Расчёты";
+            this.call_calc_form_button.UseVisualStyleBackColor = true;
+            this.call_calc_form_button.Click += new System.EventHandler(this.call_calc_form_button_Click_1);
             // 
             // panel1
             // 
@@ -514,6 +528,7 @@ namespace ControlWork
         private TableLayoutPanel table_layout_n;
         private TableLayoutPanel table_layout_a;
         private TableLayoutPanel table_layout_b;
+        private Button call_calc_form_button;
     }
 }
 
