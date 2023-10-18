@@ -32,26 +32,11 @@ namespace ControlWork
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void n_input_Leave(object sender, EventArgs e)
-        {
-            if (!int.TryParse(n_input.Text, out int number))
-            {
-                // Если введенное значение не является числом, очищаем поле ввода
-                n_input.Text = "";
-            }
-            else if (number < 1 || number > 9000)
-            {
-                // Если число находится вне диапазона от 5000 до 9000, очищаем поле ввода
-                n_input.Text = "";
-            }
-
-        }
-
         // n_input_MouseHover Подсказка для ввода чисел.
         private void n_input_MouseHover(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
-            tooltip.SetToolTip(n_input, "Введите число от 5000 до 9000");
+            tooltip.SetToolTip(n_input, "Введите число от 9000 до 50000");
         }
 
         // Нажатие на кнопку "Сортировка".
@@ -72,11 +57,11 @@ namespace ControlWork
             double[] sortedArray = new double[n];
             Array.Copy(array, sortedArray, n);
 
-            Stopwatch stopwatch = new Stopwatch();
-
-            stopwatch.Start(); // Отсчёт таймер
             int comparisonCount = 0;
             int swapCount = 0;
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start(); // Отсчёт таймер
             MergeSortHelper.MergeSortAlgorithm(sortedArray, 0, sortedArray.Length - 1, ref comparisonCount, ref swapCount);
             stopwatch.Stop(); // Остановка таймера после сортировки
 
@@ -101,9 +86,9 @@ namespace ControlWork
             }
 
             int n;
-            if (!int.TryParse(n_input.Text, out n) || n < 1 || n > 9000)
+            if (!int.TryParse(n_input.Text, out n) || n < 1 || n > 50000)
             {
-                MessageBox.Show("Ошибка: в поле 'N' должно быть целое число от 1 до 9000.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка: в поле 'N' должно быть целое число от 1 до 50000.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -127,28 +112,35 @@ namespace ControlWork
         private void DisplayOriginArray(double[] array)
         {
             list_origin_array.Items.Clear();
+            List<ListViewItem> listItems = new List<ListViewItem>();
 
             for (int i = 0; i < array.Length; i++)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = (i + 1).ToString();
                 item.SubItems.Add(array[i].ToString());
-                list_origin_array.Items.Add(item);
+
+                listItems.Add(item);
             }
+            list_origin_array.Items.AddRange(listItems.ToArray());
         }
 
         // Заполнеие списка для сортированного массива.
         private void DisplaySortedArray(double[] array)
         {
             list_sorted_array.Items.Clear();
+            List<ListViewItem> listItems = new List<ListViewItem>();
 
             for (int i = 0; i < array.Length; i++)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = (i + 1).ToString();
                 item.SubItems.Add(array[i].ToString());
-                list_sorted_array.Items.Add(item);
+
+                listItems.Add(item);
             }
+
+            list_sorted_array.Items.AddRange(listItems.ToArray());
         }
 
         // Заполнение элементов для статистики.
