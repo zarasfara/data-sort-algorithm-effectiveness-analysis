@@ -105,7 +105,6 @@ namespace ControlWork
             this.n_input.Size = new System.Drawing.Size(120, 20);
             this.n_input.TabIndex = 1;
             this.n_input.Text = "100";
-            this.n_input.Leave += new System.EventHandler(this.n_input_Leave);
             this.n_input.MouseHover += new System.EventHandler(this.n_input_MouseHover);
             // 
             // n_label
