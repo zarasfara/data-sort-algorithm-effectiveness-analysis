@@ -50,34 +50,37 @@ namespace ControlWork
 
         private void start_calculation_button_Click(object sender, EventArgs e)
         {
+
+            // Заполнение списка - начало
             list_calculations.Items.Clear();
 
-            int numberArrays; // Количество массивов
-            int.TryParse(sample_size_input.Text, out numberArrays);
+            if (!int.TryParse(sample_size_input.Text, out int numberArrays) || numberArrays <= 0)
+            {
+                // Вывод модального окна с сообщением об ошибке
+                MessageBox.Show("Некорректный ввод количества массивов.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Это наверное нужно перенести в цикл, но пока и так сойдёт.
             double A = generateRandomNumber();
             double B = generateRandomNumber();
 
             List<ListViewItem> listItems = new List<ListViewItem>();
 
-            for (int i = 0;i < numberArrays; i++)
+            Random random = new Random();
+
+            for (int i = 0; i < numberArrays; i++)
             {
-                // Random random = new Random();
                 int numberArguments = random.Next(9000, 50001); // Количество элементов в каждом массиве
 
-                double[] arr = new double[numberArguments];
+                double[] arr = GenerateArray(A, B, numberArguments);
 
-                arr = GenerateArray(A, B, numberArguments);
-
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 MergeSortHelper.MergeSortAlgorithm(arr, 0, arr.Length - 1);
 
                 stopwatch.Stop();
 
-                double elapsedTime = stopwatch.Elapsed.TotalMilliseconds;
+                uint elapsedTime = (uint)stopwatch.Elapsed.TotalMilliseconds;
 
                 ListViewItem item = new ListViewItem(i.ToString());
                 item.SubItems.Add(elapsedTime.ToString());
@@ -89,6 +92,34 @@ namespace ControlWork
             }
 
             list_calculations.Items.AddRange(listItems.ToArray());
+
+            // Заполнение списка - конец
+
+            // Расчёты - начало
+            text_count_array_input.Text = sample_size_input.Text;
+
+            long sumLengthArrays = 0;
+            uint amountExecutionTime = 0;
+
+            foreach (ListViewItem item in list_calculations.Items)
+            {
+                if (long.TryParse(item.SubItems[2].Text, out long value))
+                {
+                    sumLengthArrays += value;
+                }
+
+                if (uint.TryParse(item.SubItems[1].Text, out uint value1))
+                {
+                    amountExecutionTime += value1;
+                }
+            }
+
+            text_length_sum_array_input.Text = sumLengthArrays.ToString();
+            text_length_square_array_input_1.Text = sumLengthArrays.ToString();
+            text_amount_time_input.Text = amountExecutionTime.ToString();
+            text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
+            text_length_plus_time_input.Text = (sumLengthArrays * amountExecutionTime).ToString();
+            // Расчёты - конец
         }
     }
 }
