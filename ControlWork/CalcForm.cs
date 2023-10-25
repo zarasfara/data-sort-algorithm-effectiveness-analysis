@@ -52,7 +52,7 @@ namespace ControlWork
         {
 
             // Заполнение списка - начало
-            list_calculations.Items.Clear();
+            this.data_grid_calculations.Rows.Clear();
 
             if (!int.TryParse(sample_size_input.Text, out int numberArrays) || numberArrays <= 0)
             {
@@ -65,6 +65,7 @@ namespace ControlWork
             double B = generateRandomNumber();
 
             List<ListViewItem> listItems = new List<ListViewItem>();
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
 
             Random random = new Random();
 
@@ -89,36 +90,55 @@ namespace ControlWork
                 item.SubItems.Add((arr.Length * elapsedTime).ToString());
 
                 listItems.Add(item);
+
+                DataGridViewRow row = new DataGridViewRow();
+
+                row.CreateCells(data_grid_calculations);
+                row.Cells[0].Value = i.ToString();
+                row.Cells[1].Value = elapsedTime.ToString();
+                row.Cells[2].Value = arr.Length.ToString();
+                row.Cells[3].Value = ((long)arr.Length * arr.Length).ToString();
+                row.Cells[4].Value = (arr.Length * elapsedTime).ToString();
+
+                rows.Add(row);
             }
 
-            list_calculations.Items.AddRange(listItems.ToArray());
+            this.data_grid_calculations.Rows.AddRange(rows.ToArray());
 
             // Заполнение списка - конец
 
             // Расчёты - начало
-            text_count_array_input.Text = sample_size_input.Text;
+            this.text_count_array_input.Text = sample_size_input.Text;
 
             long sumLengthArrays = 0;
             uint amountExecutionTime = 0;
 
-            foreach (ListViewItem item in list_calculations.Items)
+            long sumOfProductsLengthsForTime = 0;
+
+            foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
-                if (long.TryParse(item.SubItems[2].Text, out long value))
+                if (long.TryParse(row.Cells[2].Value.ToString(), out long value))
                 {
                     sumLengthArrays += value;
                 }
 
-                if (uint.TryParse(item.SubItems[1].Text, out uint value1))
+                if (uint.TryParse(row.Cells[1].Value.ToString(), out uint value1))
                 {
                     amountExecutionTime += value1;
                 }
+
+                if (uint.TryParse(row.Cells[4].Value.ToString(), out uint value2))
+                {
+                    sumOfProductsLengthsForTime += value2;
+                }
+
             }
 
             text_length_sum_array_input.Text = sumLengthArrays.ToString();
             text_length_square_array_input_1.Text = sumLengthArrays.ToString();
             text_amount_time_input.Text = amountExecutionTime.ToString();
             text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
-            text_length_plus_time_input.Text = (sumLengthArrays * amountExecutionTime).ToString();
+            text_length_plus_time_input.Text = sumOfProductsLengthsForTime.ToString();
             // Расчёты - конец
         }
     }

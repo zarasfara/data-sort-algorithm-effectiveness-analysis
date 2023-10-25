@@ -35,16 +35,16 @@ namespace ControlWork
             this.calc_table_layout_panel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.sample_size_label = new System.Windows.Forms.Label();
-            this.sample_size_input = new System.Windows.Forms.TextBox();
+            this.sample_size_input = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.start_calculation_button = new System.Windows.Forms.Button();
-            this.list_calculations = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.data_grid_calculations = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,14 +58,16 @@ namespace ControlWork
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.text_length_sum_array_input = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.text_amount_time_input = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.text_length_square_array_input_1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.text_amount_time_input = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.calc_table_layout_panel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sample_size_input)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.data_grid_calculations)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -109,6 +111,7 @@ namespace ControlWork
             this.calc_table_layout_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.calc_table_layout_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.calc_table_layout_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.calc_table_layout_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.calc_table_layout_panel.Size = new System.Drawing.Size(1052, 617);
             this.calc_table_layout_panel.TabIndex = 1;
             // 
@@ -143,9 +146,19 @@ namespace ControlWork
             // sample_size_input
             // 
             this.sample_size_input.Location = new System.Drawing.Point(263, 3);
+            this.sample_size_input.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.sample_size_input.Name = "sample_size_input";
-            this.sample_size_input.Size = new System.Drawing.Size(215, 20);
+            this.sample_size_input.Size = new System.Drawing.Size(120, 20);
             this.sample_size_input.TabIndex = 1;
+            this.sample_size_input.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tableLayoutPanel1
             // 
@@ -154,14 +167,13 @@ namespace ControlWork
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.start_calculation_button, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.list_calculations, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.data_grid_calculations, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.18182F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.81818F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.51852F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.48148F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 282);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -172,7 +184,7 @@ namespace ControlWork
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(254, 51);
+            this.label2.Size = new System.Drawing.Size(254, 52);
             this.label2.TabIndex = 1;
             this.label2.Text = "Исходные данные";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -183,53 +195,74 @@ namespace ControlWork
             this.start_calculation_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.start_calculation_button.Location = new System.Drawing.Point(263, 3);
             this.start_calculation_button.Name = "start_calculation_button";
-            this.start_calculation_button.Size = new System.Drawing.Size(254, 45);
+            this.start_calculation_button.Size = new System.Drawing.Size(254, 46);
             this.start_calculation_button.TabIndex = 2;
             this.start_calculation_button.Text = "Расчёт";
             this.start_calculation_button.UseVisualStyleBackColor = true;
             this.start_calculation_button.Click += new System.EventHandler(this.start_calculation_button_Click);
             // 
-            // list_calculations
+            // data_grid_calculations
             // 
-            this.list_calculations.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.tableLayoutPanel1.SetColumnSpan(this.list_calculations, 2);
-            this.list_calculations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.list_calculations.GridLines = true;
-            this.list_calculations.HideSelection = false;
-            this.list_calculations.Location = new System.Drawing.Point(3, 54);
-            this.list_calculations.Name = "list_calculations";
-            this.list_calculations.Size = new System.Drawing.Size(514, 225);
-            this.list_calculations.TabIndex = 3;
-            this.list_calculations.UseCompatibleStateImageBehavior = false;
-            this.list_calculations.View = System.Windows.Forms.View.Details;
+            this.data_grid_calculations.AllowUserToAddRows = false;
+            this.data_grid_calculations.AllowUserToDeleteRows = false;
+            this.data_grid_calculations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_grid_calculations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.time,
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.tableLayoutPanel1.SetColumnSpan(this.data_grid_calculations, 2);
+            this.data_grid_calculations.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.data_grid_calculations.Location = new System.Drawing.Point(3, 55);
+            this.data_grid_calculations.Name = "data_grid_calculations";
+            this.data_grid_calculations.ReadOnly = true;
+            this.data_grid_calculations.RowHeadersVisible = false;
+            this.data_grid_calculations.Size = new System.Drawing.Size(514, 224);
+            this.data_grid_calculations.TabIndex = 3;
             // 
-            // columnHeader1
+            // id
             // 
-            this.columnHeader1.Text = "Id";
+            this.id.HeaderText = "id";
+            this.id.MinimumWidth = 50;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.id.Width = 50;
             // 
-            // columnHeader2
+            // time
             // 
-            this.columnHeader2.Text = "Время, y";
+            this.time.HeaderText = "Время, y";
+            this.time.MinimumWidth = 60;
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            this.time.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.time.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.time.Width = 60;
             // 
-            // columnHeader3
+            // Column1
             // 
-            this.columnHeader3.Text = "Размер массива, x";
-            this.columnHeader3.Width = 168;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Размер массива, x";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // columnHeader4
+            // Column2
             // 
-            this.columnHeader4.Text = "x*x";
-            this.columnHeader4.Width = 111;
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "x*x";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // columnHeader5
+            // Column3
             // 
-            this.columnHeader5.Text = "x*y";
-            this.columnHeader5.Width = 99;
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "x*y";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // tableLayoutPanel3
             // 
@@ -284,6 +317,7 @@ namespace ControlWork
             this.text_length_plus_time_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.text_length_plus_time_input.Location = new System.Drawing.Point(324, 42);
             this.text_length_plus_time_input.Name = "text_length_plus_time_input";
+            this.text_length_plus_time_input.ReadOnly = true;
             this.text_length_plus_time_input.Size = new System.Drawing.Size(100, 20);
             this.text_length_plus_time_input.TabIndex = 5;
             this.text_length_plus_time_input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -308,6 +342,7 @@ namespace ControlWork
             this.text_length_square_array_input.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.text_length_square_array_input.Location = new System.Drawing.Point(3, 4);
             this.text_length_square_array_input.Name = "text_length_square_array_input";
+            this.text_length_square_array_input.ReadOnly = true;
             this.text_length_square_array_input.Size = new System.Drawing.Size(66, 20);
             this.text_length_square_array_input.TabIndex = 0;
             this.text_length_square_array_input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -344,6 +379,7 @@ namespace ControlWork
             this.text_count_array_input.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.text_count_array_input.Location = new System.Drawing.Point(3, 4);
             this.text_count_array_input.Name = "text_count_array_input";
+            this.text_count_array_input.ReadOnly = true;
             this.text_count_array_input.Size = new System.Drawing.Size(76, 20);
             this.text_count_array_input.TabIndex = 0;
             this.text_count_array_input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -379,6 +415,7 @@ namespace ControlWork
             this.text_length_sum_array_input.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.text_length_sum_array_input.Location = new System.Drawing.Point(3, 4);
             this.text_length_sum_array_input.Name = "text_length_sum_array_input";
+            this.text_length_sum_array_input.ReadOnly = true;
             this.text_length_sum_array_input.Size = new System.Drawing.Size(66, 20);
             this.text_length_sum_array_input.TabIndex = 0;
             this.text_length_sum_array_input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -393,15 +430,6 @@ namespace ControlWork
             this.label5.TabIndex = 1;
             this.label5.Text = "a1 =";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // text_amount_time_input
-            // 
-            this.text_amount_time_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.text_amount_time_input.Location = new System.Drawing.Point(324, 7);
-            this.text_amount_time_input.Name = "text_amount_time_input";
-            this.text_amount_time_input.Size = new System.Drawing.Size(100, 20);
-            this.text_amount_time_input.TabIndex = 2;
-            this.text_amount_time_input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel7
             // 
@@ -423,6 +451,7 @@ namespace ControlWork
             this.text_length_square_array_input_1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.text_length_square_array_input_1.Location = new System.Drawing.Point(3, 4);
             this.text_length_square_array_input_1.Name = "text_length_square_array_input_1";
+            this.text_length_square_array_input_1.ReadOnly = true;
             this.text_length_square_array_input_1.Size = new System.Drawing.Size(76, 20);
             this.text_length_square_array_input_1.TabIndex = 0;
             this.text_length_square_array_input_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -438,6 +467,16 @@ namespace ControlWork
             this.label6.Text = "a0 +";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // text_amount_time_input
+            // 
+            this.text_amount_time_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.text_amount_time_input.Location = new System.Drawing.Point(324, 7);
+            this.text_amount_time_input.Name = "text_amount_time_input";
+            this.text_amount_time_input.ReadOnly = true;
+            this.text_amount_time_input.Size = new System.Drawing.Size(100, 20);
+            this.text_amount_time_input.TabIndex = 2;
+            this.text_amount_time_input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // CalcForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,8 +490,10 @@ namespace ControlWork
             this.calc_table_layout_panel.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sample_size_input)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.data_grid_calculations)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -475,16 +516,9 @@ namespace ControlWork
         private System.Windows.Forms.TableLayoutPanel calc_table_layout_panel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label sample_size_label;
-        private System.Windows.Forms.TextBox sample_size_input;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button start_calculation_button;
-        private System.Windows.Forms.ListView list_calculations;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -502,5 +536,12 @@ namespace ControlWork
         private TableLayoutPanel tableLayoutPanel7;
         private TextBox text_length_square_array_input_1;
         private Label label6;
+        private DataGridView data_grid_calculations;
+        private NumericUpDown sample_size_input;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn time;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
     }
 }
