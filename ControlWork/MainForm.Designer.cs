@@ -32,9 +32,7 @@ namespace ControlWork
         {
             this.header_panel = new System.Windows.Forms.Panel();
             this.app_name_label = new System.Windows.Forms.Label();
-            this.n_input = new System.Windows.Forms.TextBox();
             this.n_label = new System.Windows.Forms.Label();
-            this.a_input = new System.Windows.Forms.TextBox();
             this.a_label = new System.Windows.Forms.Label();
             this.table_main_content = new System.Windows.Forms.TableLayoutPanel();
             this.table_sort_content = new System.Windows.Forms.TableLayoutPanel();
@@ -55,10 +53,12 @@ namespace ControlWork
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.table_layout_b = new System.Windows.Forms.TableLayoutPanel();
-            this.b_input = new System.Windows.Forms.TextBox();
+            this.b_input = new System.Windows.Forms.NumericUpDown();
             this.b_label = new System.Windows.Forms.Label();
             this.table_layout_n = new System.Windows.Forms.TableLayoutPanel();
+            this.n_input = new System.Windows.Forms.NumericUpDown();
             this.table_layout_a = new System.Windows.Forms.TableLayoutPanel();
+            this.a_input = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button_sort_begin = new System.Windows.Forms.Button();
             this.button_clear = new System.Windows.Forms.Button();
@@ -70,8 +70,11 @@ namespace ControlWork
             this.panel_counter.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.table_layout_b.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.b_input)).BeginInit();
             this.table_layout_n.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.n_input)).BeginInit();
             this.table_layout_a.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.a_input)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -96,17 +99,6 @@ namespace ControlWork
             this.app_name_label.Text = "Сортировка данных";
             this.app_name_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // n_input
-            // 
-            this.n_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.n_input.Location = new System.Drawing.Point(36, 67);
-            this.n_input.MinimumSize = new System.Drawing.Size(100, 20);
-            this.n_input.Name = "n_input";
-            this.n_input.Size = new System.Drawing.Size(120, 20);
-            this.n_input.TabIndex = 1;
-            this.n_input.Text = "100";
-            this.n_input.MouseHover += new System.EventHandler(this.n_input_MouseHover);
-            // 
             // n_label
             // 
             this.n_label.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -118,15 +110,6 @@ namespace ControlWork
             this.n_label.TabIndex = 0;
             this.n_label.Text = "n";
             this.n_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // a_input
-            // 
-            this.a_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.a_input.Location = new System.Drawing.Point(39, 67);
-            this.a_input.Name = "a_input";
-            this.a_input.Size = new System.Drawing.Size(120, 20);
-            this.a_input.TabIndex = 1;
-            this.a_input.Text = "0,85";
             // 
             // a_label
             // 
@@ -180,6 +163,7 @@ namespace ControlWork
             this.columnId,
             this.columnElement});
             this.list_origin_array.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list_origin_array.GridLines = true;
             this.list_origin_array.HideSelection = false;
             this.list_origin_array.Location = new System.Drawing.Point(3, 43);
             this.list_origin_array.Name = "list_origin_array";
@@ -196,7 +180,7 @@ namespace ControlWork
             // columnElement
             // 
             this.columnElement.Text = "Элемент";
-            this.columnElement.Width = 100;
+            this.columnElement.Width = 180;
             // 
             // panel_counter
             // 
@@ -216,6 +200,7 @@ namespace ControlWork
             // 
             this.text_box_swap_count.Location = new System.Drawing.Point(148, 67);
             this.text_box_swap_count.Name = "text_box_swap_count";
+            this.text_box_swap_count.ReadOnly = true;
             this.text_box_swap_count.Size = new System.Drawing.Size(100, 20);
             this.text_box_swap_count.TabIndex = 5;
             // 
@@ -233,6 +218,7 @@ namespace ControlWork
             // 
             this.text_box_comparison_count.Location = new System.Drawing.Point(148, 41);
             this.text_box_comparison_count.Name = "text_box_comparison_count";
+            this.text_box_comparison_count.ReadOnly = true;
             this.text_box_comparison_count.Size = new System.Drawing.Size(100, 20);
             this.text_box_comparison_count.TabIndex = 3;
             // 
@@ -250,6 +236,7 @@ namespace ControlWork
             // 
             this.text_box_time.Location = new System.Drawing.Point(148, 15);
             this.text_box_time.Name = "text_box_time";
+            this.text_box_time.ReadOnly = true;
             this.text_box_time.Size = new System.Drawing.Size(100, 20);
             this.text_box_time.TabIndex = 1;
             // 
@@ -269,6 +256,7 @@ namespace ControlWork
             this.columnHeader1,
             this.columnHeader2});
             this.list_sorted_array.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list_sorted_array.GridLines = true;
             this.list_sorted_array.HideSelection = false;
             this.list_sorted_array.Location = new System.Drawing.Point(433, 43);
             this.list_sorted_array.Name = "list_sorted_array";
@@ -285,7 +273,7 @@ namespace ControlWork
             // columnHeader2
             // 
             this.columnHeader2.Text = "Элемент";
-            this.columnHeader2.Width = 100;
+            this.columnHeader2.Width = 180;
             // 
             // label1
             // 
@@ -333,24 +321,45 @@ namespace ControlWork
             this.table_layout_b.ColumnCount = 2;
             this.table_layout_b.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.table_layout_b.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table_layout_b.Controls.Add(this.b_input, 1, 0);
+            this.table_layout_b.Controls.Add(this.b_input, 0, 0);
             this.table_layout_b.Controls.Add(this.b_label, 0, 0);
             this.table_layout_b.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table_layout_b.Location = new System.Drawing.Point(3, 323);
             this.table_layout_b.Name = "table_layout_b";
             this.table_layout_b.RowCount = 1;
             this.table_layout_b.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_b.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 154F));
             this.table_layout_b.Size = new System.Drawing.Size(206, 154);
             this.table_layout_b.TabIndex = 5;
             // 
             // b_input
             // 
-            this.b_input.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.b_input.Location = new System.Drawing.Point(39, 67);
+            this.b_input.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.b_input.DecimalPlaces = 2;
+            this.b_input.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.b_input.Location = new System.Drawing.Point(61, 67);
+            this.b_input.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.b_input.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.b_input.Name = "b_input";
             this.b_input.Size = new System.Drawing.Size(120, 20);
-            this.b_input.TabIndex = 1;
-            this.b_input.Text = "0,65";
+            this.b_input.TabIndex = 2;
+            this.b_input.Value = new decimal(new int[] {
+            65,
+            0,
+            0,
+            131072});
             // 
             // b_label
             // 
@@ -368,8 +377,8 @@ namespace ControlWork
             this.table_layout_n.ColumnCount = 2;
             this.table_layout_n.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.table_layout_n.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table_layout_n.Controls.Add(this.n_input, 1, 0);
             this.table_layout_n.Controls.Add(this.n_label, 0, 0);
+            this.table_layout_n.Controls.Add(this.n_input, 1, 0);
             this.table_layout_n.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table_layout_n.Location = new System.Drawing.Point(3, 3);
             this.table_layout_n.Name = "table_layout_n";
@@ -378,20 +387,73 @@ namespace ControlWork
             this.table_layout_n.Size = new System.Drawing.Size(206, 154);
             this.table_layout_n.TabIndex = 3;
             // 
+            // n_input
+            // 
+            this.n_input.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.n_input.Location = new System.Drawing.Point(59, 67);
+            this.n_input.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.n_input.Minimum = new decimal(new int[] {
+            9000,
+            0,
+            0,
+            0});
+            this.n_input.Name = "n_input";
+            this.n_input.Size = new System.Drawing.Size(120, 20);
+            this.n_input.TabIndex = 1;
+            this.n_input.Value = new decimal(new int[] {
+            9000,
+            0,
+            0,
+            0});
+            // 
             // table_layout_a
             // 
             this.table_layout_a.ColumnCount = 2;
             this.table_layout_a.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.table_layout_a.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table_layout_a.Controls.Add(this.a_input, 1, 0);
             this.table_layout_a.Controls.Add(this.a_label, 0, 0);
+            this.table_layout_a.Controls.Add(this.a_input, 1, 0);
             this.table_layout_a.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table_layout_a.Location = new System.Drawing.Point(3, 163);
             this.table_layout_a.Name = "table_layout_a";
             this.table_layout_a.RowCount = 1;
             this.table_layout_a.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_layout_a.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 154F));
             this.table_layout_a.Size = new System.Drawing.Size(206, 154);
             this.table_layout_a.TabIndex = 4;
+            // 
+            // a_input
+            // 
+            this.a_input.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.a_input.DecimalPlaces = 2;
+            this.a_input.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.a_input.Location = new System.Drawing.Point(61, 67);
+            this.a_input.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.a_input.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.a_input.Name = "a_input";
+            this.a_input.Size = new System.Drawing.Size(120, 20);
+            this.a_input.TabIndex = 1;
+            this.a_input.Value = new decimal(new int[] {
+            85,
+            0,
+            0,
+            131072});
             // 
             // tableLayoutPanel2
             // 
@@ -481,10 +543,13 @@ namespace ControlWork
             this.tableLayoutPanel3.ResumeLayout(false);
             this.table_layout_b.ResumeLayout(false);
             this.table_layout_b.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.b_input)).EndInit();
             this.table_layout_n.ResumeLayout(false);
             this.table_layout_n.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.n_input)).EndInit();
             this.table_layout_a.ResumeLayout(false);
             this.table_layout_a.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.a_input)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -497,8 +562,6 @@ namespace ControlWork
         private System.Windows.Forms.Panel header_panel;
         private System.Windows.Forms.Label app_name_label;
         private System.Windows.Forms.Label a_label;
-        private System.Windows.Forms.TextBox a_input;
-        private System.Windows.Forms.TextBox n_input;
         private System.Windows.Forms.Label n_label;
         private TableLayoutPanel table_main_content;
         private TableLayoutPanel table_sort_content;
@@ -521,13 +584,15 @@ namespace ControlWork
         private Button button_sort_begin;
         private Button button_clear;
         private Panel panel1;
-        private TextBox b_input;
         private Label b_label;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel table_layout_n;
         private TableLayoutPanel table_layout_a;
         private TableLayoutPanel table_layout_b;
         private Button call_calc_form_button;
+        private NumericUpDown n_input;
+        private NumericUpDown b_input;
+        private NumericUpDown a_input;
     }
 }
 

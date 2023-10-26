@@ -85,13 +85,6 @@ namespace ControlWork
                 return false;
             }
 
-            int n;
-            if (!int.TryParse(n_input.Text, out n) || n < 1 || n > 50000)
-            {
-                MessageBox.Show("Ошибка: в поле 'N' должно быть целое число от 1 до 50000.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
             return true;
         }
 
