@@ -64,7 +64,6 @@ namespace ControlWork
             double A = generateRandomNumber();
             double B = generateRandomNumber();
 
-            List<ListViewItem> listItems = new List<ListViewItem>();
             List<DataGridViewRow> rows = new List<DataGridViewRow>();
 
             Random random = new Random();
@@ -82,14 +81,6 @@ namespace ControlWork
                 stopwatch.Stop();
 
                 uint elapsedTime = (uint)stopwatch.Elapsed.TotalMilliseconds;
-
-                ListViewItem item = new ListViewItem(i.ToString());
-                item.SubItems.Add(elapsedTime.ToString());
-                item.SubItems.Add(arr.Length.ToString());
-                item.SubItems.Add(((long)arr.Length * arr.Length).ToString());
-                item.SubItems.Add((arr.Length * elapsedTime).ToString());
-
-                listItems.Add(item);
 
                 DataGridViewRow row = new DataGridViewRow();
 
