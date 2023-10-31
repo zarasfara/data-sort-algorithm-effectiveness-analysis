@@ -397,7 +397,7 @@ namespace ControlWork
             0,
             0});
             this.n_input.Minimum = new decimal(new int[] {
-            9000,
+            1,
             0,
             0,
             0});
