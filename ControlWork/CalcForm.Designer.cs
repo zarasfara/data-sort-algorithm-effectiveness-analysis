@@ -65,7 +65,7 @@ namespace ControlWork
             this.text_length_sum_array_input = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.text_length_square_array_input_1 = new System.Windows.Forms.TextBox();
+            this.text_length_sum_array_input_1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.text_amount_time_input = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -536,7 +536,7 @@ namespace ControlWork
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel7.Controls.Add(this.text_length_square_array_input_1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.text_length_sum_array_input_1, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label6, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 63);
@@ -546,15 +546,15 @@ namespace ControlWork
             this.tableLayoutPanel7.Size = new System.Drawing.Size(165, 54);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
-            // text_length_square_array_input_1
+            // text_length_sum_array_input_1
             // 
-            this.text_length_square_array_input_1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.text_length_square_array_input_1.Location = new System.Drawing.Point(3, 17);
-            this.text_length_square_array_input_1.Name = "text_length_square_array_input_1";
-            this.text_length_square_array_input_1.ReadOnly = true;
-            this.text_length_square_array_input_1.Size = new System.Drawing.Size(101, 20);
-            this.text_length_square_array_input_1.TabIndex = 0;
-            this.text_length_square_array_input_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.text_length_sum_array_input_1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.text_length_sum_array_input_1.Location = new System.Drawing.Point(3, 17);
+            this.text_length_sum_array_input_1.Name = "text_length_sum_array_input_1";
+            this.text_length_sum_array_input_1.ReadOnly = true;
+            this.text_length_sum_array_input_1.Size = new System.Drawing.Size(101, 20);
+            this.text_length_sum_array_input_1.TabIndex = 0;
+            this.text_length_sum_array_input_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -847,7 +847,7 @@ namespace ControlWork
         private TextBox text_length_square_array_input;
         private Label label7;
         private TableLayoutPanel tableLayoutPanel7;
-        private TextBox text_length_square_array_input_1;
+        private TextBox text_length_sum_array_input_1;
         private Label label6;
         private DataGridView data_grid_calculations;
         private NumericUpDown sample_size_input;

@@ -125,12 +125,36 @@ namespace ControlWork
 
             }
 
-            text_length_sum_array_input.Text = sumLengthArrays.ToString();
-            text_length_square_array_input_1.Text = sumLengthArrays.ToString();
-            text_amount_time_input.Text = amountExecutionTime.ToString();
-            text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
-            text_length_plus_time_input.Text = sumOfProductsLengthsForTime.ToString();
-            // Расчёты - конец
+            // Сумма размеров массивов (Сумма x)
+            this.text_length_sum_array_input.Text = sumLengthArrays.ToString();
+
+            this.text_length_sum_array_input_1.Text = sumLengthArrays.ToString();
+
+            // Сумма времени выполнения (Сумма y)
+            this.text_amount_time_input.Text = amountExecutionTime.ToString();
+
+            // Сумма x * x
+            this.text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
+
+            // Сумма произведений x * y
+            this.text_length_plus_time_input.Text = sumOfProductsLengthsForTime.ToString();
+
+            double[,] inputData = { 
+                { 
+                    Convert.ToDouble(sample_size_input.Text), 
+                    Convert.ToDouble(text_length_sum_array_input.Text), 
+                    Convert.ToDouble(text_amount_time_input.Text) },
+                { 
+                    Convert.ToDouble(text_length_sum_array_input_1.Text), 
+                    Convert.ToDouble(text_length_square_array_input.Text),
+                    Convert.ToDouble(text_length_plus_time_input.Text) 
+                }
+            };
+
+            string[] res = GaussMethod.SolveGauss(inputData);
+
+            textBox1.Text = res[0];
+            textBox2.Text = res[1]; // Это приходится форматировать потому что результат дурацкий
         }
     }
 }
