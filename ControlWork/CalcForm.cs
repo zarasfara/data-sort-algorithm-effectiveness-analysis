@@ -151,10 +151,27 @@ namespace ControlWork
                 }
             };
 
-            string[] res = GaussMethod.SolveGauss(inputData);
+            double[] res = GaussMethod.SolveGauss(inputData);
 
-            textBox1.Text = res[0];
-            textBox2.Text = res[1]; // Это приходится форматировать потому что результат дурацкий
+            textBox1.Text = Convert.ToString(res[0]); // a0
+            textBox2.Text = Convert.ToString(res[1]); // a1
+
+            // коэффициент эластичности
+            double a1 = Convert.ToDouble(textBox2.Text);
+            double averageX = Convert.ToDouble(this.text_length_sum_array_input.Text) / Convert.ToDouble(sample_size_input.Value);
+
+            DataGridViewColumn selectedColumn = this.data_grid_calculations.Columns["time"];
+            // Переменная для хранения суммы
+            int sum = 0;
+            // Проходимся по каждой строке и добавляем значение ячейки в сумму
+            foreach (DataGridViewRow row in this.data_grid_calculations.Rows)
+            {
+                sum += Convert.ToInt32(row.Cells[selectedColumn.Index].Value);
+            }
+
+            double averageY = Convert.ToDouble(this.text_amount_time_input.Text) / Convert.ToDouble(sample_size_input.Value);
+            text_box_elasticity.Text = Convert.ToString(СoefficientsHelper.CoefficientElasticity(a1, averageX, averageY));
+
         }
     }
 }

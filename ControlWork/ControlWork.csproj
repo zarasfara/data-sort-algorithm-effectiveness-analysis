@@ -81,6 +81,7 @@
     <Compile Include="MergeSortHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="СoefficientsHelper.cs" />
     <EmbeddedResource Include="CalcForm.resx">
       <DependentUpon>CalcForm.cs</DependentUpon>
     </EmbeddedResource>
