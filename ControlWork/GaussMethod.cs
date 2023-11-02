@@ -9,10 +9,10 @@ namespace ControlWork
 {
     internal class GaussMethod
     {
-        public static string[] SolveGauss(double[,] matrix)
+        public static double[] SolveGauss(double[,] matrix)
         {
             int n = matrix.GetLength(0);
-            string[] solution = new string[n];
+            double[] solution = new double[n];
 
             // Прямой ход метода Гаусса
             for (int k = 0; k < n - 1; k++)
@@ -33,9 +33,9 @@ namespace ControlWork
                 double sum = 0;
                 for (int j = i + 1; j < n; j++)
                 {
-                    sum += matrix[i, j] * double.Parse(solution[j]);
+                    sum += matrix[i, j] * solution[j];
                 }
-                solution[i] = ((matrix[i, n] - sum) / matrix[i, i]).ToString("F11");
+                solution[i] = ((matrix[i, n] - sum) / matrix[i, i]);
             }
 
             return solution;
