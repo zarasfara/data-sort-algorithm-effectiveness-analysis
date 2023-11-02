@@ -172,6 +172,9 @@ namespace ControlWork
             double averageY = Convert.ToDouble(this.text_amount_time_input.Text) / Convert.ToDouble(sample_size_input.Value);
             text_box_elasticity.Text = Convert.ToString(СoefficientsHelper.CoefficientElasticity(a1, averageX, averageY));
 
+            // Уравнение связи
+            textBox_link_y.Text = Convert.ToString(res[0]);
+            textBox_link_x.Text = Convert.ToString(res[1]);
         }
     }
 }

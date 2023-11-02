@@ -50,7 +50,7 @@ namespace ControlWork
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox_link_y = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -75,7 +75,7 @@ namespace ControlWork
             this.label16 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox_link_x = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.text_box_correlation = new System.Windows.Forms.TextBox();
@@ -354,7 +354,7 @@ namespace ControlWork
             // panel3
             // 
             this.panel3.Controls.Add(this.label17);
-            this.panel3.Controls.Add(this.textBox7);
+            this.panel3.Controls.Add(this.textBox_link_y);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(174, 183);
             this.panel3.Name = "panel3";
@@ -371,13 +371,13 @@ namespace ControlWork
             this.label17.TabIndex = 1;
             this.label17.Text = "+";
             // 
-            // textBox7
+            // textBox_link_y
             // 
-            this.textBox7.Location = new System.Drawing.Point(3, 17);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(111, 20);
-            this.textBox7.TabIndex = 0;
+            this.textBox_link_y.Location = new System.Drawing.Point(3, 17);
+            this.textBox_link_y.Name = "textBox_link_y";
+            this.textBox_link_y.ReadOnly = true;
+            this.textBox_link_y.Size = new System.Drawing.Size(111, 20);
+            this.textBox_link_y.TabIndex = 0;
             // 
             // tableLayoutPanel10
             // 
@@ -638,7 +638,7 @@ namespace ControlWork
             // panel2
             // 
             this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.textBox8);
+            this.panel2.Controls.Add(this.textBox_link_x);
             this.panel2.Location = new System.Drawing.Point(345, 183);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(167, 56);
@@ -654,13 +654,13 @@ namespace ControlWork
             this.label18.TabIndex = 3;
             this.label18.Text = "x";
             // 
-            // textBox8
+            // textBox_link_x
             // 
-            this.textBox8.Location = new System.Drawing.Point(11, 18);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 2;
+            this.textBox_link_x.Location = new System.Drawing.Point(11, 18);
+            this.textBox_link_x.Name = "textBox_link_x";
+            this.textBox_link_x.ReadOnly = true;
+            this.textBox_link_x.Size = new System.Drawing.Size(100, 20);
+            this.textBox_link_x.TabIndex = 2;
             // 
             // tableLayoutPanel11
             // 
@@ -875,10 +875,10 @@ namespace ControlWork
         private Label label16;
         private Panel panel3;
         private Label label17;
-        private TextBox textBox7;
+        private TextBox textBox_link_y;
         private Panel panel2;
         private Label label18;
-        private TextBox textBox8;
+        private TextBox textBox_link_x;
         private Label label19;
     }
 }
