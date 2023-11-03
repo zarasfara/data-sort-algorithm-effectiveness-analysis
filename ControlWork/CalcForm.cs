@@ -163,10 +163,17 @@ namespace ControlWork
             DataGridViewColumn selectedColumn = this.data_grid_calculations.Columns["time"];
             // Переменная для хранения суммы
             int sum = 0;
+
+            // Создание массива
+            int length = Convert.ToInt32(sample_size_input.Text);
+            int[] array_time = new int[length];
+            int rowIndex = 0;
             // Проходимся по каждой строке и добавляем значение ячейки в сумму
             foreach (DataGridViewRow row in this.data_grid_calculations.Rows)
             {
                 sum += Convert.ToInt32(row.Cells[selectedColumn.Index].Value);
+                array_time[rowIndex] = Convert.ToInt32(row.Cells[selectedColumn.Index].Value);
+                rowIndex++;
             }
 
             double averageY = Convert.ToDouble(this.text_amount_time_input.Text) / Convert.ToDouble(sample_size_input.Value);
@@ -175,6 +182,18 @@ namespace ControlWork
             // Уравнение связи
             textBox_link_y.Text = Convert.ToString(res[0]);
             textBox_link_x.Text = Convert.ToString(res[1]);
+
+            // Коэффициент корреляции
+            double coeff_corel = СoefficientsHelper.CoefficientCorelation(
+                Convert.ToInt64(sample_size_input.Value),
+                array_time,
+                sumLengthArrays,
+                amountExecutionTime,
+                Convert.ToInt64(Math.Pow(sumLengthArrays, 2)),
+                sumOfProductsLengthsForTime
+            );
+
+            text_box_correlation.Text = Convert.ToString(coeff_corel);
         }
     }
 }
