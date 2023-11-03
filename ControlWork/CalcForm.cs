@@ -48,25 +48,10 @@ namespace ControlWork
             return array;
         }
 
-        private void start_calculation_button_Click(object sender, EventArgs e)
+        private void FillDataGrid(int numberArrays, double A, double B)
         {
-
-            // Заполнение списка - начало
-            this.data_grid_calculations.Rows.Clear();
-
-            if (!int.TryParse(sample_size_input.Text, out int numberArrays) || numberArrays <= 0)
-            {
-                // Вывод модального окна с сообщением об ошибке
-                MessageBox.Show("Некорректный ввод количества массивов.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            double A = generateRandomNumber();
-            double B = generateRandomNumber();
-
+            data_grid_calculations.Rows.Clear();
             List<DataGridViewRow> rows = new List<DataGridViewRow>();
-
-            Random random = new Random();
 
             for (int i = 0; i < numberArrays; i++)
             {
@@ -75,15 +60,12 @@ namespace ControlWork
                 double[] arr = GenerateArray(A, B, numberArguments);
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
-
                 MergeSortHelper.MergeSortAlgorithm(arr, 0, arr.Length - 1);
-
                 stopwatch.Stop();
 
                 uint elapsedTime = (uint)stopwatch.Elapsed.TotalMilliseconds;
 
                 DataGridViewRow row = new DataGridViewRow();
-
                 row.CreateCells(data_grid_calculations);
                 row.Cells[0].Value = i.ToString();
                 row.Cells[1].Value = elapsedTime.ToString();
@@ -94,17 +76,14 @@ namespace ControlWork
                 rows.Add(row);
             }
 
-            this.data_grid_calculations.Rows.AddRange(rows.ToArray());
+            data_grid_calculations.Rows.AddRange(rows.ToArray());
+        }
 
-            // Заполнение списка - конец
-
-            // Расчёты - начало
-            this.text_count_array_input.Text = sample_size_input.Text;
-
-            long sumLengthArrays = 0;
-            uint amountExecutionTime = 0;
-
-            long sumOfProductsLengthsForTime = 0;
+        private void PerformCalculations()
+        {
+            long sumLengthArrays = 0; // Сумма длин массивов - x
+            uint amountExecutionTime = 0; // сумма время выполнения - y
+            long sumOfProductsLengthsForTime = 0; // произведение времени выполнения и длины массив - x * y
 
             foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
@@ -122,32 +101,25 @@ namespace ControlWork
                 {
                     sumOfProductsLengthsForTime += value2;
                 }
-
             }
 
-            // Сумма размеров массивов (Сумма x)
-            this.text_length_sum_array_input.Text = sumLengthArrays.ToString();
+            text_count_array_input.Text = sample_size_input.Text;
+            text_length_sum_array_input.Text = sumLengthArrays.ToString();
+            text_length_sum_array_input_1.Text = sumLengthArrays.ToString();
+            text_amount_time_input.Text = amountExecutionTime.ToString();
+            text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
+            text_length_plus_time_input.Text = sumOfProductsLengthsForTime.ToString();
 
-            this.text_length_sum_array_input_1.Text = sumLengthArrays.ToString();
-
-            // Сумма времени выполнения (Сумма y)
-            this.text_amount_time_input.Text = amountExecutionTime.ToString();
-
-            // Сумма x * x
-            this.text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
-
-            // Сумма произведений x * y
-            this.text_length_plus_time_input.Text = sumOfProductsLengthsForTime.ToString();
-
-            double[,] inputData = { 
-                { 
-                    Convert.ToDouble(sample_size_input.Text), 
-                    Convert.ToDouble(text_length_sum_array_input.Text), 
-                    Convert.ToDouble(text_amount_time_input.Text) },
-                { 
-                    Convert.ToDouble(text_length_sum_array_input_1.Text), 
+            double[,] inputData = {
+                {
+                    Convert.ToDouble(sample_size_input.Text),
+                    Convert.ToDouble(text_length_sum_array_input.Text),
+                    Convert.ToDouble(text_amount_time_input.Text)
+                },
+                {
+                    Convert.ToDouble(text_length_sum_array_input_1.Text),
                     Convert.ToDouble(text_length_square_array_input.Text),
-                    Convert.ToDouble(text_length_plus_time_input.Text) 
+                    Convert.ToDouble(text_length_plus_time_input.Text)
                 }
             };
 
@@ -156,34 +128,28 @@ namespace ControlWork
             textBox1.Text = Convert.ToString(res[0]); // a0
             textBox2.Text = Convert.ToString(res[1]); // a1
 
-            // коэффициент эластичности
-            double a1 = Convert.ToDouble(textBox2.Text);
-            double averageX = Convert.ToDouble(this.text_length_sum_array_input.Text) / Convert.ToDouble(sample_size_input.Value);
+            double a1 = res[1];
+            double averageX = Convert.ToDouble(text_length_sum_array_input.Text) / Convert.ToDouble(sample_size_input.Value);
 
-            DataGridViewColumn selectedColumn = this.data_grid_calculations.Columns["time"];
-            // Переменная для хранения суммы
+            DataGridViewColumn selectedColumn = data_grid_calculations.Columns["time"];
             int sum = 0;
-
-            // Создание массива
             int length = Convert.ToInt32(sample_size_input.Text);
             int[] array_time = new int[length];
             int rowIndex = 0;
-            // Проходимся по каждой строке и добавляем значение ячейки в сумму
-            foreach (DataGridViewRow row in this.data_grid_calculations.Rows)
+
+            foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
                 sum += Convert.ToInt32(row.Cells[selectedColumn.Index].Value);
                 array_time[rowIndex] = Convert.ToInt32(row.Cells[selectedColumn.Index].Value);
                 rowIndex++;
             }
 
-            double averageY = Convert.ToDouble(this.text_amount_time_input.Text) / Convert.ToDouble(sample_size_input.Value);
+            double averageY = Convert.ToDouble(text_amount_time_input.Text) / Convert.ToDouble(sample_size_input.Value);
             text_box_elasticity.Text = Convert.ToString(СoefficientsHelper.CoefficientElasticity(a1, averageX, averageY));
 
-            // Уравнение связи
             textBox_link_y.Text = Convert.ToString(res[0]);
             textBox_link_x.Text = Convert.ToString(res[1]);
 
-            // Коэффициент корреляции
             double coeff_corel = СoefficientsHelper.CoefficientCorelation(
                 Convert.ToInt64(sample_size_input.Value),
                 array_time,
@@ -194,6 +160,20 @@ namespace ControlWork
             );
 
             text_box_correlation.Text = Convert.ToString(coeff_corel);
+        }
+
+        private void start_calculation_button_Click(object sender, EventArgs e)
+        {
+
+            // Заполнение списка - начало
+            double A = generateRandomNumber();
+            double B = generateRandomNumber();
+
+            // Заполнение data grid view 
+            FillDataGrid(Convert.ToInt32(sample_size_input.Text), A, B);
+            // Заполнение списка - конец
+
+            PerformCalculations();
         }
     }
 }
