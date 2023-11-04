@@ -26,5 +26,27 @@ namespace ControlWork
 
             return coeff_corel;
         }
+
+        public static double BetaCoefficient(double a1, long n, long sum_x, double sum_y, long[] array_x, double[] array_y)
+        {
+            double sum_Xi = 0;
+            double sum_Yi = 0;
+
+            double medium_value_x = sum_x / n;
+            double medium_value_y = sum_y / n;
+
+            for (int i = 0; i < n; i++)
+            {
+                sum_Xi += Math.Pow(array_x[i] - medium_value_x, 2);
+                sum_Yi += Math.Pow(array_y[i] - medium_value_y, 2);
+            }
+
+            double S_x = Math.Sqrt(sum_Xi / n);
+            double S_y = Math.Sqrt(sum_Yi / n);
+
+            double beta_coeff = (a1 * S_x) / S_y;
+
+            return beta_coeff;
+        }
     }
 }
