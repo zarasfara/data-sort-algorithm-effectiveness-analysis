@@ -131,16 +131,19 @@ namespace ControlWork
             double a1 = res[1];
             double averageX = Convert.ToDouble(text_length_sum_array_input.Text) / Convert.ToDouble(sample_size_input.Value);
 
-            DataGridViewColumn selectedColumn = data_grid_calculations.Columns["time"];
-            int sum = 0;
+            DataGridViewColumn timeColumn = data_grid_calculations.Columns["time"];
+            DataGridViewColumn sizeColumn = data_grid_calculations.Columns["array_size"];
+            int sumTime = 0;
             int length = Convert.ToInt32(sample_size_input.Text);
-            int[] array_time = new int[length];
-            int rowIndex = 0;
+            int[] array_time = new int[length]; // Массив времени выполнения
+            int[] array_size = new int[length]; // Массив размеров массивов
 
+            int rowIndex = 0;
             foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
-                sum += Convert.ToInt32(row.Cells[selectedColumn.Index].Value);
-                array_time[rowIndex] = Convert.ToInt32(row.Cells[selectedColumn.Index].Value);
+                sumTime += Convert.ToInt32(row.Cells[timeColumn.Index].Value);
+                array_time[rowIndex] = Convert.ToInt32(row.Cells[timeColumn.Index].Value);
+                array_size[rowIndex] = Convert.ToInt32(row.Cells[sizeColumn.Index].Value);
                 rowIndex++;
             }
 
@@ -160,6 +163,9 @@ namespace ControlWork
             );
 
             text_box_correlation.Text = Convert.ToString(coeff_corel);
+
+            double coeff_beta = СoefficientsHelper.BetaCoefficient(a1, Convert.ToInt64(sample_size_input.Value), sumLengthArrays, sumTime, array_size, array_time);
+            this.text_box_beta_coefficient.Text = coeff_beta.ToString();
         }
 
         private void start_calculation_button_Click(object sender, EventArgs e)

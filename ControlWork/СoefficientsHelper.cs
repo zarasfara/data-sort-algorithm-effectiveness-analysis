@@ -27,7 +27,7 @@ namespace ControlWork
             return coeff_corel;
         }
 
-        public static double BetaCoefficient(double a1, long n, long sum_x, double sum_y, long[] array_x, double[] array_y)
+        public static double BetaCoefficient(double a1, long n, long sum_x, double sum_y, int[] array_x, int[] array_y)
         {
             double sum_Xi = 0;
             double sum_Yi = 0;
