@@ -166,6 +166,9 @@ namespace ControlWork
 
             double coeff_beta = СoefficientsHelper.BetaCoefficient(a1, Convert.ToInt64(sample_size_input.Value), sumLengthArrays, sumTime, array_size, array_time);
             this.text_box_beta_coefficient.Text = coeff_beta.ToString();
+
+            // Коэффициент детерминации
+            text_box_determination.Text = СoefficientsHelper.CoefficientDetermination(coeff_corel).ToString();
         }
 
         private void start_calculation_button_Click(object sender, EventArgs e)

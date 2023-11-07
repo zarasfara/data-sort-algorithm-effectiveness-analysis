@@ -48,5 +48,10 @@ namespace ControlWork
 
             return beta_coeff;
         }
+
+        public static double CoefficientDetermination(double coeff_corel)
+        {
+            return Math.Pow(coeff_corel, 2);
+        }
     }
 }
