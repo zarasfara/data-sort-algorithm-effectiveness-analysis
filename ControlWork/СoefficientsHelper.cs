@@ -8,9 +8,14 @@ namespace ControlWork
 {
     internal class СoefficientsHelper
     {
-        public static double CoefficientElasticity(double a1, double averageX, double averageY)
+        public static double CoefficientElasticity(double a1, long n, long sum_x, double sum_y)
         {
-            return (a1 * averageX) / averageY;
+            double medium_value_x = sum_x / n;
+            double medium_value_y = sum_y / n;
+
+            double coeff_elastic = (a1 * medium_value_x) / medium_value_y;
+
+            return coeff_elastic;
         }
 
         public static double CoefficientCorelation(long n, int[] array_y, long sum_x, double sum_y, long sum_x_2, long sum_xy)

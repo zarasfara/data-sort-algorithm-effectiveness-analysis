@@ -30,6 +30,9 @@ namespace ControlWork
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.calc_table_layout_panel = new System.Windows.Forms.TableLayoutPanel();
@@ -40,6 +43,11 @@ namespace ControlWork
             this.label2 = new System.Windows.Forms.Label();
             this.start_calculation_button = new System.Windows.Forms.Button();
             this.data_grid_calculations = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.array_size = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -81,11 +89,7 @@ namespace ControlWork
             this.text_box_beta_coefficient = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.array_size = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chart_dots = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             this.calc_table_layout_panel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -103,6 +107,7 @@ namespace ControlWork
             this.tableLayoutPanel9.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_dots)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -135,6 +140,7 @@ namespace ControlWork
             this.calc_table_layout_panel.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.calc_table_layout_panel.Controls.Add(this.tableLayoutPanel11, 1, 2);
             this.calc_table_layout_panel.Controls.Add(this.label19, 1, 0);
+            this.calc_table_layout_panel.Controls.Add(this.chart_dots, 1, 1);
             this.calc_table_layout_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.calc_table_layout_panel.Location = new System.Drawing.Point(0, 55);
             this.calc_table_layout_panel.Name = "calc_table_layout_panel";
@@ -252,6 +258,49 @@ namespace ControlWork
             this.data_grid_calculations.RowHeadersVisible = false;
             this.data_grid_calculations.Size = new System.Drawing.Size(515, 231);
             this.data_grid_calculations.TabIndex = 3;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.MinimumWidth = 50;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.id.Width = 50;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "Время, y";
+            this.time.MinimumWidth = 60;
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            this.time.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.time.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.time.Width = 60;
+            // 
+            // array_size
+            // 
+            this.array_size.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.array_size.HeaderText = "Размер массива, x";
+            this.array_size.Name = "array_size";
+            this.array_size.ReadOnly = true;
+            this.array_size.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "x*x";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "x*y";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // tableLayoutPanel3
             // 
@@ -735,48 +784,22 @@ namespace ControlWork
             this.label19.Text = "Точечный график и график уравнения связи";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // id
+            // chart_dots
             // 
-            this.id.HeaderText = "id";
-            this.id.MinimumWidth = 50;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.id.Width = 50;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "Время, y";
-            this.time.MinimumWidth = 60;
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            this.time.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.time.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.time.Width = 60;
-            // 
-            // array_size
-            // 
-            this.array_size.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.array_size.HeaderText = "Размер массива, x";
-            this.array_size.Name = "array_size";
-            this.array_size.ReadOnly = true;
-            this.array_size.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "x*x";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "x*y";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            chartArea1.Name = "ChartArea1";
+            this.chart_dots.ChartAreas.Add(chartArea1);
+            this.chart_dots.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart_dots.Legends.Add(legend1);
+            this.chart_dots.Location = new System.Drawing.Point(530, 43);
+            this.chart_dots.Name = "chart_dots";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_dots.Series.Add(series1);
+            this.chart_dots.Size = new System.Drawing.Size(521, 290);
+            this.chart_dots.TabIndex = 5;
+            this.chart_dots.Text = "chart1";
             // 
             // CalcForm
             // 
@@ -818,6 +841,7 @@ namespace ControlWork
             this.panel2.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_dots)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -880,5 +904,6 @@ namespace ControlWork
         private DataGridViewTextBoxColumn array_size;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_dots;
     }
 }

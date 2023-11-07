@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ControlWork
 {
@@ -81,35 +82,40 @@ namespace ControlWork
 
         private void PerformCalculations()
         {
-            long sumLengthArrays = 0; // Сумма длин массивов - x
-            uint amountExecutionTime = 0; // сумма время выполнения - y
-            long sumOfProductsLengthsForTime = 0; // произведение времени выполнения и длины массив - x * y
+            int n = int.Parse(sample_size_input.Text); // n
+            long sumLengthArrays = 0; // Сумма x (Длин массивов)
+            uint amountExecutionTime = 0; // Сумма y (Времени выполнения)
+            long sumOfProductsLengthsForTime = 0; // Суммма x * y
 
             foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
-                if (long.TryParse(row.Cells[2].Value.ToString(), out long value))
+                // y
+                if (uint.TryParse(row.Cells[1].Value.ToString(), out uint valueX))
                 {
-                    sumLengthArrays += value;
+                    amountExecutionTime += valueX;
                 }
 
-                if (uint.TryParse(row.Cells[1].Value.ToString(), out uint value1))
+                // x
+                if (long.TryParse(row.Cells[2].Value.ToString(), out long valueY))
                 {
-                    amountExecutionTime += value1;
+                    sumLengthArrays += valueY;
                 }
 
-                if (uint.TryParse(row.Cells[4].Value.ToString(), out uint value2))
+                // x * y
+                if (uint.TryParse(row.Cells[4].Value.ToString(), out uint valueXY))
                 {
-                    sumOfProductsLengthsForTime += value2;
+                    sumOfProductsLengthsForTime += valueXY;
                 }
             }
 
-            text_count_array_input.Text = sample_size_input.Text;
-            text_length_sum_array_input.Text = sumLengthArrays.ToString();
+            text_count_array_input.Text = n.ToString();
+            text_length_sum_array_input.Text = sumLengthArrays.ToString(); // сумма x
             text_length_sum_array_input_1.Text = sumLengthArrays.ToString();
-            text_amount_time_input.Text = amountExecutionTime.ToString();
+            text_amount_time_input.Text = amountExecutionTime.ToString(); // сумма y
             text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
             text_length_plus_time_input.Text = sumOfProductsLengthsForTime.ToString();
 
+            // Матрица
             double[,] inputData = {
                 {
                     Convert.ToDouble(sample_size_input.Text),
@@ -125,55 +131,59 @@ namespace ControlWork
 
             double[] res = GaussMethod.SolveGauss(inputData);
 
-            textBox1.Text = Convert.ToString(res[0]); // a0
-            textBox2.Text = Convert.ToString(res[1]); // a1
+            textBox1.Text = res[0].ToString();
+            textBox2.Text = res[1].ToString();
 
             double a1 = res[1];
-            double averageX = Convert.ToDouble(text_length_sum_array_input.Text) / Convert.ToDouble(sample_size_input.Value);
 
             DataGridViewColumn timeColumn = data_grid_calculations.Columns["time"];
             DataGridViewColumn sizeColumn = data_grid_calculations.Columns["array_size"];
-            int sumTime = 0;
             int length = Convert.ToInt32(sample_size_input.Text);
-            int[] array_time = new int[length]; // Массив времени выполнения
-            int[] array_size = new int[length]; // Массив размеров массивов
+            List<int> array_time = new List<int>(length);
+            List<int> array_size = new List<int>(length);
 
-            int rowIndex = 0;
             foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
-                sumTime += Convert.ToInt32(row.Cells[timeColumn.Index].Value);
-                array_time[rowIndex] = Convert.ToInt32(row.Cells[timeColumn.Index].Value);
-                array_size[rowIndex] = Convert.ToInt32(row.Cells[sizeColumn.Index].Value);
-                rowIndex++;
+                int timeValue = Convert.ToInt32(row.Cells[timeColumn.Index].Value);
+                array_time.Add(timeValue);
+                array_size.Add(Convert.ToInt32(row.Cells[sizeColumn.Index].Value));
             }
 
-            double averageY = Convert.ToDouble(text_amount_time_input.Text) / Convert.ToDouble(sample_size_input.Value);
-            text_box_elasticity.Text = Convert.ToString(СoefficientsHelper.CoefficientElasticity(a1, averageX, averageY));
+            text_box_elasticity.Text = СoefficientsHelper.CoefficientElasticity(a1, n, sumLengthArrays, amountExecutionTime).ToString();
 
-            textBox_link_y.Text = Convert.ToString(res[0]);
-            textBox_link_x.Text = Convert.ToString(res[1]);
+            textBox_link_y.Text = res[0].ToString();
+            textBox_link_x.Text = res[1].ToString();
 
             double coeff_corel = СoefficientsHelper.CoefficientCorelation(
                 Convert.ToInt64(sample_size_input.Value),
-                array_time,
+                array_time.ToArray(),
                 sumLengthArrays,
                 amountExecutionTime,
                 Convert.ToInt64(Math.Pow(sumLengthArrays, 2)),
                 sumOfProductsLengthsForTime
             );
 
-            text_box_correlation.Text = Convert.ToString(coeff_corel);
+            text_box_correlation.Text = coeff_corel.ToString();
 
-            double coeff_beta = СoefficientsHelper.BetaCoefficient(a1, Convert.ToInt64(sample_size_input.Value), sumLengthArrays, sumTime, array_size, array_time);
-            this.text_box_beta_coefficient.Text = coeff_beta.ToString();
+            double coeff_beta = СoefficientsHelper.BetaCoefficient(a1, n, sumLengthArrays, amountExecutionTime, array_size.ToArray(), array_time.ToArray());
+            text_box_beta_coefficient.Text = coeff_beta.ToString();
 
-            // Коэффициент детерминации
             text_box_determination.Text = СoefficientsHelper.CoefficientDetermination(coeff_corel).ToString();
+
+            chart_dots.Series.Clear();
+            Series series = new Series("Точечный наблюденный график");
+            series.ChartType = SeriesChartType.Point;
+
+            for (int i = 0; i < array_time.Count; i++)
+            {
+                series.Points.AddXY(array_size[i], array_time[i]);
+            }
+            chart_dots.Series.Add(series);
         }
+
 
         private void start_calculation_button_Click(object sender, EventArgs e)
         {
-
             // Заполнение списка - начало
             double A = generateRandomNumber();
             double B = generateRandomNumber();
