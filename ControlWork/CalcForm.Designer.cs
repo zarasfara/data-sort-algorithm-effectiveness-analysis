@@ -184,6 +184,11 @@ namespace ControlWork
             // 
             this.sample_size_input.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.sample_size_input.Location = new System.Drawing.Point(330, 7);
+            this.sample_size_input.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.sample_size_input.Minimum = new decimal(new int[] {
             1,
             0,
@@ -899,11 +904,11 @@ namespace ControlWork
         private Label label18;
         private TextBox textBox_link_x;
         private Label label19;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_dots;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn time;
         private DataGridViewTextBoxColumn array_size;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart_dots;
     }
 }

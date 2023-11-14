@@ -18,7 +18,7 @@ namespace ControlWork
             return coeff_elastic;
         }
 
-        public static double CoefficientCorelation(long n, int[] array_y, long sum_x, double sum_y, long sum_x_2, long sum_xy)
+        public static double CoefficientCorelation(long n, double[] array_y, long sum_x, double sum_y, long sum_x_2, double sum_xy)
         {
             double sum_y_2 = 0;
             for (int i = 0; i < n; i++)
@@ -32,7 +32,7 @@ namespace ControlWork
             return coeff_corel;
         }
 
-        public static double BetaCoefficient(double a1, long n, long sum_x, double sum_y, int[] array_x, int[] array_y)
+        public static double BetaCoefficient(double a1, long n, long sum_x, double sum_y, int[] array_x, double[] array_y)
         {
             double sum_Xi = 0;
             double sum_Yi = 0;

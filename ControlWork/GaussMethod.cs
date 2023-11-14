@@ -12,33 +12,58 @@ namespace ControlWork
         public static double[] SolveGauss(double[,] matrix)
         {
             int n = matrix.GetLength(0);
-            double[] solution = new double[n];
 
-            // Прямой ход метода Гаусса
-            for (int k = 0; k < n - 1; k++)
+            for (int i = 0; i < n; i++)
             {
-                for (int i = k + 1; i < n; i++)
+                double maxElement = Math.Abs(matrix[i, i]);
+                int maxIndex = i;
+                for (int k = i + 1; k < n; k++)
                 {
-                    double factor = matrix[i, k] / matrix[k, k];
-                    for (int j = k; j < n + 1; j++)
+                    if (Math.Abs(matrix[k, i]) > maxElement)
                     {
-                        matrix[i, j] -= factor * matrix[k, j];
+                        maxElement = Math.Abs(matrix[k, i]);
+                        maxIndex = k;
+                    }
+                }
+
+                for (int k = i; k < n + 1; k++)
+                {
+                    double temp = matrix[maxIndex, k];
+                    matrix[maxIndex, k] = matrix[i, k];
+                    matrix[i, k] = temp;
+                }
+
+                for (int k = i + 1; k < n; k++)
+                {
+                    double coeff = -matrix[k, i] / matrix[i, i];
+
+                    for (int j = i; j < n + 1; j++)
+                    {
+                        if (i == j)
+                        {
+                            matrix[k, j] = 0;
+                        }
+
+                        else
+                        {
+                            matrix[k, j] += coeff * matrix[i, j];
+                        }
                     }
                 }
             }
 
-            // Обратный ход метода Гаусса
+            double[] result = new double[n];
+
             for (int i = n - 1; i >= 0; i--)
             {
-                double sum = 0;
-                for (int j = i + 1; j < n; j++)
+                result[i] = matrix[i, n] / matrix[i, i];
+                for (int k = i - 1; k >= 0; k--)
                 {
-                    sum += matrix[i, j] * solution[j];
+                    matrix[k, n] -= matrix[k, i] * result[i];
                 }
-                solution[i] = ((matrix[i, n] - sum) / matrix[i, i]);
             }
 
-            return solution;
+            return result;
         }
     }
 }
