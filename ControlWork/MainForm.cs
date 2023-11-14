@@ -42,11 +42,6 @@ namespace ControlWork
         // Нажатие на кнопку "Сортировка".
         private void button_sort_begin_Click(object sender, EventArgs e)
         {
-            if (!ValidateInputs()) // Проверка ввода
-            {
-                return;
-            }
-
             double a = double.Parse(a_input.Text);
             double b = double.Parse(b_input.Text);
             int n = int.Parse(n_input.Text);
@@ -66,26 +61,7 @@ namespace ControlWork
             stopwatch.Stop(); // Остановка таймера после сортировки
 
             DisplaySortedArray(sortedArray); // Отображение отсортированного массива
-            DisplayStatistics(comparisonCount, swapCount, stopwatch.Elapsed.TotalMilliseconds); // Отображение статистики
-        }
-
-
-        private bool ValidateInputs()
-        {
-            if (string.IsNullOrEmpty(a_input.Text) || string.IsNullOrEmpty(n_input.Text) || string.IsNullOrEmpty(b_input.Text))
-            {
-                MessageBox.Show("Ошибка: одно или несколько полей пустые.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            double a, b;
-            if (!double.TryParse(a_input.Text, out a) || !double.TryParse(b_input.Text, out b))
-            {
-                MessageBox.Show("Ошибка: в полях 'A' и 'B' должны быть только числа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            return true;
+            DisplayStatistics(comparisonCount, swapCount, stopwatch.ElapsedMilliseconds); // Отображение статистики
         }
 
         // Создание и заполнение массива.

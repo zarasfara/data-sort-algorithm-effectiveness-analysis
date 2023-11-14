@@ -174,11 +174,11 @@ namespace ControlWork
             Series series = new Series("Точечный наблюденный график");
             series.ChartType = SeriesChartType.Point;
 
+            chart_dots.Series.Add(series);
             for (int i = 0; i < array_time.Count; i++)
             {
                 series.Points.AddXY(array_size[i], array_time[i]);
             }
-            chart_dots.Series.Add(series);
         }
 
 
