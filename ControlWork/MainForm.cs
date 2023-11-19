@@ -61,7 +61,7 @@ namespace ControlWork
             stopwatch.Stop(); // Остановка таймера после сортировки
 
             DisplaySortedArray(sortedArray); // Отображение отсортированного массива
-            DisplayStatistics(comparisonCount, swapCount, stopwatch.ElapsedMilliseconds); // Отображение статистики
+            DisplayStatistics(comparisonCount, swapCount, stopwatch.Elapsed.TotalMilliseconds); // Отображение статистики
         }
 
         // Создание и заполнение массива.

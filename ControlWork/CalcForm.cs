@@ -64,7 +64,7 @@ namespace ControlWork
                 MergeSortHelper.MergeSortAlgorithm(arr, 0, arr.Length - 1);
                 stopwatch.Stop();
 
-                uint elapsedTime = (uint)stopwatch.Elapsed.TotalMilliseconds;
+                double elapsedTime = stopwatch.Elapsed.TotalMilliseconds;
 
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(data_grid_calculations);
@@ -84,25 +84,32 @@ namespace ControlWork
         {
             int n = int.Parse(sample_size_input.Text); // n
             long sumLengthArrays = 0; // Сумма x (Длин массивов)
-            uint amountExecutionTime = 0; // Сумма y (Времени выполнения)
-            long sumOfProductsLengthsForTime = 0; // Суммма x * y
+            long sumLengthArrays_2 = 0; // Сумма x (Длин массивов)
+            double amountExecutionTime = 0; // Сумма y (Времени выполнения)
+            double sumOfProductsLengthsForTime = 0; // Суммма x * y
 
             foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
                 // y
-                if (uint.TryParse(row.Cells[1].Value.ToString(), out uint valueX))
+                if (double.TryParse(row.Cells[1].Value.ToString(), out double valueY))
                 {
-                    amountExecutionTime += valueX;
+                    amountExecutionTime += valueY;
                 }
 
                 // x
-                if (long.TryParse(row.Cells[2].Value.ToString(), out long valueY))
+                if (long.TryParse(row.Cells[2].Value.ToString(), out long valueX))
                 {
-                    sumLengthArrays += valueY;
+                    sumLengthArrays += valueX;
+                }
+
+                // x
+                if (long.TryParse(row.Cells[3].Value.ToString(), out long valueTest))
+                {
+                    sumLengthArrays_2 += valueTest;
                 }
 
                 // x * y
-                if (uint.TryParse(row.Cells[4].Value.ToString(), out uint valueXY))
+                if (double.TryParse(row.Cells[4].Value.ToString(), out double valueXY))
                 {
                     sumOfProductsLengthsForTime += valueXY;
                 }
@@ -110,22 +117,22 @@ namespace ControlWork
 
             text_count_array_input.Text = n.ToString();
             text_length_sum_array_input.Text = sumLengthArrays.ToString(); // сумма x
-            text_length_sum_array_input_1.Text = sumLengthArrays.ToString();
+            text_length_sum_array_input_1.Text = sumLengthArrays.ToString(); // сумма x
             text_amount_time_input.Text = amountExecutionTime.ToString(); // сумма y
-            text_length_square_array_input.Text = Math.Pow(sumLengthArrays, 2).ToString();
+            text_length_square_array_input.Text = sumLengthArrays_2.ToString();
             text_length_plus_time_input.Text = sumOfProductsLengthsForTime.ToString();
 
             // Матрица
             double[,] inputData = {
                 {
-                    Convert.ToDouble(sample_size_input.Text),
-                    Convert.ToDouble(text_length_sum_array_input.Text),
-                    Convert.ToDouble(text_amount_time_input.Text)
+                    Convert.ToDouble(sample_size_input.Text), // n
+                    Convert.ToDouble(text_length_sum_array_input.Text), // x
+                    Convert.ToDouble(text_amount_time_input.Text) // y 
                 },
                 {
-                    Convert.ToDouble(text_length_sum_array_input_1.Text),
-                    Convert.ToDouble(text_length_square_array_input.Text),
-                    Convert.ToDouble(text_length_plus_time_input.Text)
+                    Convert.ToDouble(text_length_sum_array_input_1.Text), // x
+                    Convert.ToDouble(text_length_square_array_input.Text), // x^2
+                    Convert.ToDouble(text_length_plus_time_input.Text) // x+y
                 }
             };
 
@@ -134,17 +141,18 @@ namespace ControlWork
             textBox1.Text = res[0].ToString();
             textBox2.Text = res[1].ToString();
 
+            double a0 = res[0];
             double a1 = res[1];
 
             DataGridViewColumn timeColumn = data_grid_calculations.Columns["time"];
             DataGridViewColumn sizeColumn = data_grid_calculations.Columns["array_size"];
             int length = Convert.ToInt32(sample_size_input.Text);
-            List<int> array_time = new List<int>(length);
+            List<double> array_time = new List<double>(length);
             List<int> array_size = new List<int>(length);
 
             foreach (DataGridViewRow row in data_grid_calculations.Rows)
             {
-                int timeValue = Convert.ToInt32(row.Cells[timeColumn.Index].Value);
+                double timeValue = Convert.ToDouble(row.Cells[timeColumn.Index].Value);
                 array_time.Add(timeValue);
                 array_size.Add(Convert.ToInt32(row.Cells[sizeColumn.Index].Value));
             }
@@ -165,7 +173,15 @@ namespace ControlWork
 
             text_box_correlation.Text = coeff_corel.ToString();
 
-            double coeff_beta = СoefficientsHelper.BetaCoefficient(a1, n, sumLengthArrays, amountExecutionTime, array_size.ToArray(), array_time.ToArray());
+            double coeff_beta = СoefficientsHelper.BetaCoefficient(
+                a1,
+                n,
+                sumLengthArrays,
+                amountExecutionTime,
+                array_size.ToArray(),
+                array_time.ToArray()
+            );
+
             text_box_beta_coefficient.Text = coeff_beta.ToString();
 
             text_box_determination.Text = СoefficientsHelper.CoefficientDetermination(coeff_corel).ToString();
@@ -179,6 +195,20 @@ namespace ControlWork
             {
                 series.Points.AddXY(array_size[i], array_time[i]);
             }
+            
+            Series lineSeries = new Series("Линейный график");
+            lineSeries.ChartType = SeriesChartType.Line;
+            lineSeries.Color = Color.Red;
+            chart_dots.Series.Add(lineSeries);
+
+            int x_min = 9000;
+            int x_max = 50000;
+
+            double y_min = a0 + a1 * x_min;
+            double y_max = a0 + a1 * x_max;
+
+            lineSeries.Points.AddXY(x_min, y_min);
+            lineSeries.Points.AddXY(x_max, y_max);
         }
 
 
