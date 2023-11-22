@@ -84,7 +84,7 @@ namespace ControlWork
         {
             int n = int.Parse(sample_size_input.Text); // n
             long sumLengthArrays = 0; // Сумма x (Длин массивов)
-            long sumLengthArrays_2 = 0; // Сумма x (Длин массивов)
+            long sumLengthArrays_2 = 0; // Сумма x в квадрате (Длин массивов)
             double amountExecutionTime = 0; // Сумма y (Времени выполнения)
             double sumOfProductsLengthsForTime = 0; // Суммма x * y
 
@@ -167,7 +167,7 @@ namespace ControlWork
                 array_time.ToArray(),
                 sumLengthArrays,
                 amountExecutionTime,
-                Convert.ToInt64(Math.Pow(sumLengthArrays, 2)),
+                sumLengthArrays_2,
                 sumOfProductsLengthsForTime
             );
 
